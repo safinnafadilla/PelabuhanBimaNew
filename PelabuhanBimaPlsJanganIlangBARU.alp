@@ -108,10 +108,52 @@
 			<CurrentLevel>1717854525960</CurrentLevel>
 			<ConnectionsId>1717854525954</ConnectionsId>
 			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1719575878751</Id>
+					<Name><![CDATA[frekuensiGC]]></Name>
+					<X>-500</X><Y>630</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1719575895529</Id>
+					<Name><![CDATA[totakMuatanGC]]></Name>
+					<X>-500</X><Y>660</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1717859783017</Id>
 					<Name><![CDATA[GCLOA]]></Name>
-					<X>-670</X><Y>350</Y>
+					<X>-500</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{180,190,200,220,225,227,229,230,234}]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1719576867320</Id>
+					<Name><![CDATA[PKLOA]]></Name>
+					<X>-890</X><Y>840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -131,7 +173,7 @@
 				<Event>
 					<Id>1717859799617</Id>
 					<Name><![CDATA[intervalGC]]></Name>
-					<X>-670</X><Y>315</Y>
+					<X>-500</X><Y>315</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -164,12 +206,48 @@ gc.unload = LoadingGC();
 gc.LOA = GCLOA.get(uniform_discr(0,8));
 gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				</Event>
+				<Event>
+					<Id>1719577043435</Id>
+					<Name><![CDATA[intervalPK]]></Name>
+					<X>-890</X><Y>880</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1719648000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[20]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[IntervalPK()]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[ContainerShip pk = add_containerShips();
+pk.Kapasitas = KapasitasPK();
+pk.receive("hey");
+pk.unload = LoadingPK();
+pk.LOA = PKLOA.get(uniform_discr(0,8));
+pk.PKName.setText( "pk_" + pk.getIndex());]]></Action>
+				</Event>
 			</Events>
 			<CustomDistributions>
 				<CustomDistribution>
 					<Id>1717859764021</Id>
 					<Name><![CDATA[KapasitasGC]]></Name>
-					<X>-670</X><Y>390</Y>
+					<X>-500</X><Y>390</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -222,7 +300,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<CustomDistribution>
 					<Id>1717859772405</Id>
 					<Name><![CDATA[LoadingGC]]></Name>
-					<X>-670</X><Y>430</Y>
+					<X>-500</X><Y>430</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -275,7 +353,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<CustomDistribution>
 					<Id>1717859802588</Id>
 					<Name><![CDATA[IntervalGC]]></Name>
-					<X>-670</X><Y>470</Y>
+					<X>-500</X><Y>470</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -325,13 +403,172 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<SampleEntry>2.0</SampleEntry>
 					<SampleEntry>10.0</SampleEntry>
 					<SampleEntry>3.0</SampleEntry>				
+				</CustomDistribution>
+				<CustomDistribution>
+					<Id>1719576824625</Id>
+					<Name><![CDATA[KapasitasPK]]></Name>
+					<X>-890</X><Y>710</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type>CONTINUOUS</Type>
+					<DefinitionType>OBSERVED_SAMPLES</DefinitionType>
+					<IntegerValues>false</IntegerValues>
+					<Static>false</Static>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<RangesQuery>
+					<TableReference>
+					</TableReference>
+						<StartColumnReference>
+						</StartColumnReference>
+						<EndColumnReference>
+						</EndColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</RangesQuery>
+					<FrequencyQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</FrequencyQuery>
+					<SampleQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+					</SampleQuery>
+					<OptionQuery>
+					<TableReference>
+					</TableReference>
+						<OptionColumnReference>
+						</OptionColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</OptionQuery>										
+					<OptionListID><![CDATA[0]]></OptionListID>
+					<OptionValues>				
+					</OptionValues>
+					<SampleEntry>200.0</SampleEntry>
+					<SampleEntry>100.0</SampleEntry>
+					<SampleEntry>60.0</SampleEntry>
+					<SampleEntry>70.0</SampleEntry>				
+				</CustomDistribution>
+				<CustomDistribution>
+					<Id>1719576834300</Id>
+					<Name><![CDATA[LoadingPK]]></Name>
+					<X>-890</X><Y>750</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type>CONTINUOUS</Type>
+					<DefinitionType>OBSERVED_SAMPLES</DefinitionType>
+					<IntegerValues>false</IntegerValues>
+					<Static>false</Static>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<RangesQuery>
+					<TableReference>
+					</TableReference>
+						<StartColumnReference>
+						</StartColumnReference>
+						<EndColumnReference>
+						</EndColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</RangesQuery>
+					<FrequencyQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</FrequencyQuery>
+					<SampleQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+					</SampleQuery>
+					<OptionQuery>
+					<TableReference>
+					</TableReference>
+						<OptionColumnReference>
+						</OptionColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</OptionQuery>										
+					<OptionListID><![CDATA[0]]></OptionListID>
+					<OptionValues>				
+					</OptionValues>
+					<SampleEntry>30.0</SampleEntry>
+					<SampleEntry>40.0</SampleEntry>
+					<SampleEntry>50.0</SampleEntry>
+					<SampleEntry>60.0</SampleEntry>				
+				</CustomDistribution>
+				<CustomDistribution>
+					<Id>1719576841321</Id>
+					<Name><![CDATA[IntervalPK]]></Name>
+					<X>-890</X><Y>790</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type>CONTINUOUS</Type>
+					<DefinitionType>OBSERVED_SAMPLES</DefinitionType>
+					<IntegerValues>false</IntegerValues>
+					<Static>false</Static>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<RangesQuery>
+					<TableReference>
+					</TableReference>
+						<StartColumnReference>
+						</StartColumnReference>
+						<EndColumnReference>
+						</EndColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</RangesQuery>
+					<FrequencyQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</FrequencyQuery>
+					<SampleQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+					</SampleQuery>
+					<OptionQuery>
+					<TableReference>
+					</TableReference>
+						<OptionColumnReference>
+						</OptionColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</OptionQuery>										
+					<OptionListID><![CDATA[0]]></OptionListID>
+					<OptionValues>				
+					</OptionValues>
+					<SampleEntry>7.0</SampleEntry>
+					<SampleEntry>5.0</SampleEntry>
+					<SampleEntry>6.0</SampleEntry>
+					<SampleEntry>10.0</SampleEntry>				
 				</CustomDistribution>		
 			</CustomDistributions>
 			<AnalysisData>
     			<DataSet>
 					<Id>1717858945404</Id>
 					<Name><![CDATA[dataset1]]></Name>
-					<X>-850</X><Y>170</Y>
+					<X>-500</X><Y>510</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -353,7 +590,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
     			<DataSet>
 					<Id>1717858956428</Id>
 					<Name><![CDATA[dataset]]></Name>
-					<X>-850</X><Y>210</Y>
+					<X>-500</X><Y>550</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -375,7 +612,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
     			<Statistics>
 					<Id>1717858998896</Id>
 					<Name><![CDATA[WaitingGC]]></Name>
-					<X>-850</X><Y>250</Y>
+					<X>-500</X><Y>590</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -390,6 +627,92 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<RecurrenceCode Class="CodeUnitValue">
 						<Code><![CDATA[1]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<Discrete>true</Discrete>
+				</Statistics>
+    			<DataSet>
+					<Id>1719575946168</Id>
+					<Name><![CDATA[datasetPK]]></Name>
+					<X>-890</X><Y>530</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1719648000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<FreezeXAxis>true</FreezeXAxis>
+					<SamplesToKeep>100</SamplesToKeep>
+				</DataSet>
+    			<DataSet>
+					<Id>1719575958205</Id>
+					<Name><![CDATA[datasetPK2]]></Name>
+					<X>-890</X><Y>570</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1719648000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<FreezeXAxis>true</FreezeXAxis>
+					<SamplesToKeep>100</SamplesToKeep>
+				</DataSet>
+    			<Statistics>
+					<Id>1719576072990</Id>
+					<Name><![CDATA[WaitPK]]></Name>
+					<X>-890</X><Y>620</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1719648000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<Discrete>true</Discrete>
+				</Statistics>
+    			<Statistics>
+					<Id>1719576079740</Id>
+					<Name><![CDATA[BerthPK]]></Name>
+					<X>-890</X><Y>660</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1719648000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<Discrete>true</Discrete>
 				</Statistics>
@@ -420,7 +743,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<EmbeddedObject>
 					<Id>1717854955469</Id>
 					<Name><![CDATA[generalCargoShips]]></Name>
-					<X>-500</X><Y>150</Y>
+					<X>-520</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -490,7 +813,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<EmbeddedObject>
 					<Id>1717855024715</Id>
 					<Name><![CDATA[containerShips]]></Name>
-					<X>-500</X><Y>200</Y>
+					<X>-890</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -508,6 +831,9 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 						</GenericParameterSubstituteReference>
 					</GenericParameterSubstitute>
 					<Parameters>
+						<Parameter>
+							<Name><![CDATA[unloadingRate]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -515,68 +841,10 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InEnvironment>true</InEnvironment>	
-					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
-					<XCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</XCode>
-					<YCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</YCode>
-					<ZCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</ZCode>
-					<ColumnCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</ColumnCode>
-					<RowCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</RowCode>
-					<LatitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LatitudeCode>
-					<LongitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LongitudeCode>
-					<LocationNameCode Class="CodeValue">
-						<Code><![CDATA[""]]></Code>
-					</LocationNameCode>
-					<InitializationType>EMPTY</InitializationType>
-					<InitializationDatabaseTableQuery>
-						<TableReference>
-						</TableReference>
-					</InitializationDatabaseTableQuery>
-					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
-					<QuantityColumn>
-					</QuantityColumn>
-				</EmbeddedObject>
-				<EmbeddedObject>
-					<Id>1717855094068</Id>
-					<Name><![CDATA[livestockCarriers]]></Name>
-					<X>-500</X><Y>250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<PresentationId>1717855094070</PresentationId>
-					<ActiveObjectClass>
-						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
-						<ClassName><![CDATA[LivestockCarrier]]></ClassName>
-					</ActiveObjectClass>
-					<GenericParameterSubstitute>
-						<GenericParameterSubstituteReference>
-							<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
-							<ClassName><![CDATA[LivestockCarrier]]></ClassName>
-							<ItemName><![CDATA[1717855094037]]></ItemName>
-						</GenericParameterSubstituteReference>
-					</GenericParameterSubstitute>
-					<Parameters>
-					</Parameters>
-					<ReplicationFlag>true</ReplicationFlag>
-					<Replication Class="CodeValue">
-						<Code><![CDATA[100]]></Code>
-					</Replication>
-					<CollectionType>ARRAY_LIST_BASED</CollectionType>
-					<InEnvironment>true</InEnvironment>	
+					<InitialSpeedCode Class="CodeUnitValue">
+						<Code><![CDATA[3]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</InitialSpeedCode>
 					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
 					<XCode Class="CodeValue">
 						<Code><![CDATA[0]]></Code>
@@ -614,7 +882,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<EmbeddedObject>
 					<Id>1717855159686</Id>
 					<Name><![CDATA[port1]]></Name>
-					<X>-500</X><Y>300</Y>
+					<X>-700</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -678,7 +946,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<EmbeddedObject>
 					<Id>1717911424040</Id>
 					<Name><![CDATA[bulkCarrierShips]]></Name>
-					<X>-500</X><Y>90</Y>
+					<X>-500</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -813,7 +1081,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<Id>1717855398722</Id>
 					<Name><![CDATA[approachingNode]]></Name>
 					<X>110</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Label><X>45</X><Y>-15</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -835,7 +1103,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<X>110</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -851,10 +1119,10 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>0</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>19.413408877315753</X><Y>15.751811189896795</Y><Z>0</Z></Point>
-						<Point><X>442.17398945824357</X><Y>358.77476434178465</Y><Z>0</Z></Point>
-						<Point><X>422.7605805809278</X><Y>343.02295315188786</Y><Z>0</Z></Point>
-						<Point><X>461.73901581263476</X><Y>374.3378534873231</Y><Z>0</Z></Point>
+						<Point><X>21.974422529986796</X><Y>11.921608720034746</Y><Z>0</Z></Point>
+						<Point><X>357.17398945824357</X><Y>193.77476434178465</Y><Z>0</Z></Point>
+						<Point><X>335.1995669282568</X><Y>181.8531556217499</Y><Z>0</Z></Point>
+						<Point><X>376.73901581263476</X><Y>209.33785348732312</Y><Z>0</Z></Point>
 					</Points>
 					<Bidirectional>true</Bidirectional>
 					<SpeedLimit>false</SpeedLimit>
@@ -868,28 +1136,8 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<PointNode>
 					<Id>1717855420770</Id>
 					<Name><![CDATA[dockingNode]]></Name>
-					<X>515</X><Y>500</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<Z>0</Z>
-					<FakeNode>false</FakeNode>	
-					<Lock>false</Lock>
-					<Color>-14774017</Color>
-					<Radius>10</Radius>
-					<SpeedLimit>false</SpeedLimit>
-					<SpeedLimitValue Class="UnitValue">
-						<Value Class="Double">10</Value>
-						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-					</SpeedLimitValue>
-				</PointNode>
-				<PointNode>
-					<Id>1717855435639</Id>
-					<Name><![CDATA[departureNode]]></Name>
-					<X>20</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<X>540</X><Y>445</Y>
+					<Label><X>-24</X><Y>-43</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -908,10 +1156,10 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<Path SourceId="1717855420770" TargetId="1717855435639">
 					<Id>1717855508187</Id>
 					<Name><![CDATA[path1]]></Name>
-					<X>515</X><Y>500</Y>
+					<X>547.071</X><Y>452.071</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -926,11 +1174,11 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					</Width>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>20.343</X><Y>14.530999999999999</Y><Z>0</Z></Point>
-						<Point><X>-20.21840210757971</X><Y>-14.704292441876154</Y><Z>0</Z></Point>
-						<Point><X>-495</X><Y>-360</Y><Z>0</Z></Point>
-						<Point><X>-474.7815978924203</X><Y>-345.29570755812387</Y><Z>0</Z></Point>
-						<Point><X>-10.858</X><Y>-4.142</Y><Z>0</Z></Point>
+						<Point><X>20.343000000000004</X><Y>14.531</Y><Z>0</Z></Point>
+						<Point><X>-22.749000000000002</X><Y>-10.366</Y><Z>0</Z></Point>
+						<Point><X>-597.071</X><Y>-272.071</Y><Z>0</Z></Point>
+						<Point><X>-574.322</X><Y>-261.705</Y><Z>0</Z></Point>
+						<Point><X>-112.929</X><Y>83.787</Y><Z>0</Z></Point>
 					</Points>
 					<Bidirectional>true</Bidirectional>
 					<SpeedLimit>false</SpeedLimit>
@@ -943,12 +1191,12 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				</Path>
 				<Path SourceId="1717855398722" TargetId="1717855516241">
 					<Id>1717858334326</Id>
-					<Name><![CDATA[path2]]></Name>
+					<Name><![CDATA[AlurLabuh]]></Name>
 					<X>110</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Label><X>85</X><Y>-190</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
 					<LineColor>-14774017</LineColor>
@@ -963,10 +1211,10 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-23.254</X><Y>-9.179</Y><Z>0</Z></Point>
-						<Point><X>24.414373713769855</X><Y>5.379438275915392</Y><Z>0</Z></Point>
-						<Point><X>295</X><Y>65</Y><Z>0</Z></Point>
-						<Point><X>270.58562628623014</X><Y>59.62056172408461</Y><Z>0</Z></Point>
-						<Point><X>-85</X><Y>-85</Y><Z>0</Z></Point>
+						<Point><X>17.39933213097148</X><Y>-17.951691881161047</Y><Z>0</Z></Point>
+						<Point><X>315</X><Y>-325</Y><Z>0</Z></Point>
+						<Point><X>297.601</X><Y>-307.048</Y><Z>0</Z></Point>
+						<Point><X>-65</X><Y>-475</Y><Z>0</Z></Point>
 					</Points>
 					<Bidirectional>true</Bidirectional>
 					<SpeedLimit>false</SpeedLimit>
@@ -980,11 +1228,11 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<RectangleNode>
 					<Id>1717855516241</Id>
 					<Name><![CDATA[labuhNode]]></Name>
-					<X>405</X><Y>75</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<X>425</X><Y>-315</Y>
+					<Label><X>45</X><Y>-15</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
 					<EmbeddedObject>
@@ -1108,17 +1356,17 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 						<SlopeType>angle</SlopeType>	
 					</Slope>
 
-					<Width>165</Width>
+					<Width>175</Width>
 					<Height>140</Height>
 					<Rotation>0.0</Rotation>
 				</RectangleNode>
 				<PointNode>
 					<Id>1717860996790</Id>
 					<Name><![CDATA[node]]></Name>
-					<X>560</X><Y>405</Y>
+					<X>475</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -1135,10 +1383,10 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<Path SourceId="1717855516241" TargetId="1717860996790">
 					<Id>1717860994085</Id>
 					<Name><![CDATA[path3]]></Name>
-					<X>475</X><Y>215</Y>
+					<X>475</X><Y>-175</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<Z>0</Z>
@@ -1154,10 +1402,10 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>0</X><Y>25</Y><Z>0</Z></Point>
-						<Point><X>10.73813833996035</X><Y>22.576367843208825</Y><Z>0</Z></Point>
-						<Point><X>85.6237828615518</X><Y>180.01947421517116</Y><Z>0</Z></Point>
-						<Point><X>74.88564452159144</X><Y>157.44310637196233</Y><Z>0</Z></Point>
-						<Point><X>84.06432570767228</X><Y>204.97078867724338</Y><Z>0</Z></Point>
+						<Point><X>0.0389999999999997</X><Y>25</Y><Z>0</Z></Point>
+						<Point><X>0.6240000000000006</X><Y>405.019</Y><Z>0</Z></Point>
+						<Point><X>0.5850000000000009</X><Y>380.019</Y><Z>0</Z></Point>
+						<Point><X>-0.9359999999999999</X><Y>429.971</Y><Z>0</Z></Point>
 					</Points>
 					<Bidirectional>true</Bidirectional>
 					<SpeedLimit>false</SpeedLimit>
@@ -1171,7 +1419,66 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<Path SourceId="1717860996790" TargetId="1717855420770">
 					<Id>1717860996801</Id>
 					<Name><![CDATA[path4]]></Name>
-					<X>556.286093236459</X><Y>414.2847669088526</Y>
+					<X>475</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-14774017</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineWidth>1</LineWidth>
+					<PathType>dashedLine</PathType>
+					
+					<Width Class="UnitValue">
+						<Value Class="Double">1</Value>
+						<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+					</Width>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>9.285000000000004</X><Y>-23.212000000000003</Y><Z>0</Z></Point>
+						<Point><X>7.5560965183482525</X><Y>23.830765942482955</Y><Z>0</Z></Point>
+						<Point><X>37.649</X><Y>118.74</Y><Z>0</Z></Point>
+						<Point><X>30.093</X><Y>94.91</Y><Z>0</Z></Point>
+						<Point><X>46.3</X><Y>142.196</Y><Z>0</Z></Point>
+						<Point><X>72.071</X><Y>212.071</Y><Z>0</Z></Point>
+						<Point><X>63.42</X><Y>188.616</Y><Z>0</Z></Point>
+						<Point><X>66.213</X><Y>147.929</Y><Z>0</Z></Point>
+					</Points>
+					<Bidirectional>true</Bidirectional>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="CodeUnitValue">
+						<Code><![CDATA[10.0]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+					<LimitNumberOfTransporters>false</LimitNumberOfTransporters>
+					<LimitNumberOfTransportersValue>10</LimitNumberOfTransportersValue>
+				</Path>
+				<PointNode>
+					<Id>1717855435639</Id>
+					<Name><![CDATA[departureNode]]></Name>
+					<X>-50</X><Y>180</Y>
+					<Label><X>-55</X><Y>-25</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<FakeNode>false</FakeNode>	
+					<Lock>false</Lock>
+					<Color>-14774017</Color>
+					<Radius>10</Radius>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="UnitValue">
+						<Value Class="Double">10</Value>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+				</PointNode>
+				<Path SourceId="1717860996790" TargetId="1719066139770">
+					<Id>1719066307971</Id>
+					<Name><![CDATA[path5]]></Name>
+					<X>475</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1189,11 +1496,14 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					</Width>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>9.284766908852593</X><Y>-23.211917272131483</Y><Z>0</Z></Point>
-						<Point><X>-10.848759881149475</X><Y>22.523419124128594</Y><Z>0</Z></Point>
-						<Point><X>-41.28609323645897</X><Y>85.71523309114743</Y><Z>0</Z></Point>
-						<Point><X>-30.43733335530949</X><Y>63.19181396701883</Y><Z>0</Z></Point>
-						<Point><X>-47.14409323645897</X><Y>21.57323309114743</Y><Z>0</Z></Point>
+						<Point><X>-4.983</X><Y>-24.498</Y><Z>0</Z></Point>
+						<Point><X>3.95</X><Y>24.686</Y><Z>0</Z></Point>
+						<Point><X>20</X><Y>125</Y><Z>0</Z></Point>
+						<Point><X>16.05</X><Y>100.314</Y><Z>0</Z></Point>
+						<Point><X>24.526</X><Y>149.587</Y><Z>0</Z></Point>
+						<Point><X>47.071</X><Y>272.071</Y><Z>0</Z></Point>
+						<Point><X>42.545</X><Y>247.484</Y><Z>0</Z></Point>
+						<Point><X>-11.881</X><Y>-69.081</Y><Z>0</Z></Point>
 					</Points>
 					<Bidirectional>true</Bidirectional>
 					<SpeedLimit>false</SpeedLimit>
@@ -1204,6 +1514,269 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<LimitNumberOfTransporters>false</LimitNumberOfTransporters>
 					<LimitNumberOfTransportersValue>10</LimitNumberOfTransportersValue>
 				</Path>
+				<PointNode>
+					<Id>1719066139770</Id>
+					<Name><![CDATA[dockingBNode]]></Name>
+					<X>515</X><Y>505</Y>
+					<Label><X>-138</X><Y>-21</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<FakeNode>false</FakeNode>	
+					<Lock>false</Lock>
+					<Color>-14774017</Color>
+					<Radius>10</Radius>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="UnitValue">
+						<Value Class="Double">10</Value>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+				</PointNode>
+				<Path SourceId="1719066139770" TargetId="1717855435639">
+					<Id>1719068373389</Id>
+					<Name><![CDATA[path6]]></Name>
+					<X>522.071</X><Y>512.071</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-14774017</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineWidth>1</LineWidth>
+					<PathType>dashedLine</PathType>
+					
+					<Width Class="UnitValue">
+						<Value Class="Double">1</Value>
+						<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+					</Width>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>17.677999999999997</X><Y>-17.677999999999997</Y><Z>0</Z></Point>
+						<Point><X>-21.621000000000002</X><Y>-12.551</Y><Z>0</Z></Point>
+						<Point><X>-572.071</X><Y>-332.071</Y><Z>0</Z></Point>
+						<Point><X>-550.45</X><Y>-319.52000000000004</Y><Z>0</Z></Point>
+						<Point><X>-49.748999999999995</X><Y>15.607000000000001</Y><Z>0</Z></Point>
+					</Points>
+					<Bidirectional>true</Bidirectional>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="CodeUnitValue">
+						<Code><![CDATA[10.0]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+					<LimitNumberOfTransporters>false</LimitNumberOfTransporters>
+					<LimitNumberOfTransportersValue>10</LimitNumberOfTransportersValue>
+				</Path>
+				<Path SourceId="1717860996790" TargetId="1719068326625">
+					<Id>1719554699776</Id>
+					<Name><![CDATA[path7]]></Name>
+					<X>475</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-14774017</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineWidth>1</LineWidth>
+					<PathType>dashedLine</PathType>
+					
+					<Width Class="UnitValue">
+						<Value Class="Double">1</Value>
+						<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+					</Width>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.435</X><Y>24.959</Y><Z>0</Z></Point>
+						<Point><X>18.944</X><Y>329.472</Y><Z>0</Z></Point>
+						<Point><X>17.509</X><Y>304.513</Y><Z>0</Z></Point>
+						<Point><X>78.258</X><Y>-31.877</Y><Z>0</Z></Point>
+					</Points>
+					<Bidirectional>true</Bidirectional>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="CodeUnitValue">
+						<Code><![CDATA[10.0]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+					<LimitNumberOfTransporters>false</LimitNumberOfTransporters>
+					<LimitNumberOfTransportersValue>10</LimitNumberOfTransportersValue>
+				</Path>
+				<PointNode>
+					<Id>1719068326625</Id>
+					<Name><![CDATA[dockingCNode]]></Name>
+					<X>485</X><Y>565</Y>
+					<Label><X>-146</X><Y>2</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<FakeNode>false</FakeNode>	
+					<Lock>false</Lock>
+					<Color>-14774017</Color>
+					<Radius>10</Radius>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="UnitValue">
+						<Value Class="Double">10</Value>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+				</PointNode>
+				<Path SourceId="1719068326625" TargetId="1717855435639">
+					<Id>1719554722084</Id>
+					<Name><![CDATA[path8]]></Name>
+					<X>493.944</X><Y>569.472</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-14774017</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineWidth>1</LineWidth>
+					<PathType>dashedLine</PathType>
+					
+					<Width Class="UnitValue">
+						<Value Class="Double">1</Value>
+						<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+					</Width>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>19.522</X><Y>15.616999999999997</Y><Z>0</Z></Point>
+						<Point><X>-20.326</X><Y>-14.554000000000002</Y><Z>0</Z></Point>
+						<Point><X>-543.944</X><Y>-389.472</Y><Z>0</Z></Point>
+						<Point><X>-523.617</X><Y>-374.918</Y><Z>0</Z></Point>
+						<Point><X>-3.2990000000000013</X><Y>-81.16099999999999</Y><Z>0</Z></Point>
+					</Points>
+					<Bidirectional>true</Bidirectional>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="CodeUnitValue">
+						<Code><![CDATA[10.0]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+					<LimitNumberOfTransporters>false</LimitNumberOfTransporters>
+					<LimitNumberOfTransportersValue>10</LimitNumberOfTransportersValue>
+				</Path>
+				<Path SourceId="1717855516241" TargetId="1719563822149">
+					<Id>1719563810856</Id>
+					<Name><![CDATA[AlurKSP]]></Name>
+					<X>550</X><Y>-175</Y>
+					<Label><X>70</X><Y>125</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-14774017</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineWidth>1</LineWidth>
+					<PathType>dashedLine</PathType>
+					
+					<Width Class="UnitValue">
+						<Value Class="Double">1</Value>
+						<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+					</Width>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>-14.703999999999994</X><Y>-20.218</Y><Z>0</Z></Point>
+						<Point><X>9.998999999999995</X><Y>22.913</Y><Z>0</Z></Point>
+						<Point><X>120</X><Y>275</Y><Z>0</Z></Point>
+						<Point><X>110.001</X><Y>252.087</Y><Z>0</Z></Point>
+						<Point><X>127.906</X><Y>251.283</Y><Z>0</Z></Point>
+					</Points>
+					<Bidirectional>true</Bidirectional>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="CodeUnitValue">
+						<Code><![CDATA[10.0]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+					<LimitNumberOfTransporters>false</LimitNumberOfTransporters>
+					<LimitNumberOfTransportersValue>10</LimitNumberOfTransportersValue>
+				</Path>
+				<PointNode>
+					<Id>1719563822149</Id>
+					<Name><![CDATA[KSPNode]]></Name>
+					<X>670</X><Y>100</Y>
+					<Label><X>-95</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<FakeNode>false</FakeNode>	
+					<Lock>false</Lock>
+					<Color>-14774017</Color>
+					<Radius>10</Radius>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="UnitValue">
+						<Value Class="Double">10</Value>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+				</PointNode>
+				<Path SourceId="1717860996790" TargetId="1719567713031">
+					<Id>1719567732243</Id>
+					<Name><![CDATA[path2]]></Name>
+					<X>475</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LineColor>-14774017</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineWidth>1</LineWidth>
+					<PathType>dashedLine</PathType>
+					
+					<Width Class="UnitValue">
+						<Value Class="Double">1</Value>
+						<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+					</Width>
+					<Points>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>16.65</X><Y>18.648</Y><Z>0</Z></Point>
+						<Point><X>125</X><Y>140</Y><Z>0</Z></Point>
+						<Point><X>108.35</X><Y>121.352</Y><Z>0</Z></Point>
+						<Point><X>116.222</X><Y>163.408</Y><Z>0</Z></Point>
+						<Point><X>95</X><Y>220</Y><Z>0</Z></Point>
+						<Point><X>103.778</X><Y>196.592</Y><Z>0</Z></Point>
+						<Point><X>120.248</X><Y>148.536</Y><Z>0</Z></Point>
+					</Points>
+					<Bidirectional>true</Bidirectional>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="CodeUnitValue">
+						<Code><![CDATA[10.0]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+					<LimitNumberOfTransporters>false</LimitNumberOfTransporters>
+					<LimitNumberOfTransportersValue>10</LimitNumberOfTransportersValue>
+				</Path>
+				<PointNode>
+					<Id>1719567713031</Id>
+					<Name><![CDATA[dockingDNode]]></Name>
+					<X>570</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<FakeNode>false</FakeNode>	
+					<Lock>false</Lock>
+					<Color>-14774017</Color>
+					<Radius>5</Radius>
+					<SpeedLimit>false</SpeedLimit>
+					<SpeedLimitValue Class="UnitValue">
+						<Value Class="Double">10</Value>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</SpeedLimitValue>
+				</PointNode>
 			</Presentation>
 
 					<Z>0</Z>
@@ -1393,7 +1966,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>125</Width>
+					<Width>50</Width>
 					<Height>10</Height>
 					<Rotation>295.0</Rotation>
 					<FillColor>-4144960</FillColor>
@@ -1491,28 +2064,6 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<Id>1717924810101</Id>
 					<Name><![CDATA[rectangle13]]></Name>
 					<X>700</X><Y>365</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>99</Width>
-					<Height>8</Height>
-					<Rotation>25.0</Rotation>
-					<FillColor>-4144960</FillColor>
-					<FillMaterial>null</FillMaterial>
-				</Rectangle>
-				<Rectangle>
-					<Id>1717924830211</Id>
-					<Name><![CDATA[rectangle14]]></Name>
-					<X>732</X><Y>292</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2479,108 +3030,6 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 				</Figure3D>
-				<Figure3D>
-					<Id>1718046098642</Id>
-					<Name><![CDATA[cruise_ship]]></Name>
-					<X>-700</X><Y>660</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>-700</X><Y>660</Y><Z>0</Z>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<ResourceReference>
-						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
-						<ClassName><![CDATA[3d/cruise_ship.dae]]></ClassName>
-					</ResourceReference>
-					<ColorTable>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_23]]></Name>
-							<OriginalColor>-13983</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material]]></Name>
-							<OriginalColor>-11447983</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_10]]></Name>
-							<OriginalColor>-1668546</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_8]]></Name>
-							<OriginalColor>-1973791</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_6]]></Name>
-							<OriginalColor>-16734209</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_7]]></Name>
-							<OriginalColor>-6750199</OriginalColor>
-						</ColorMapping>
-					</ColorTable>
-					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
-					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
-					<ApplyShading>true</ApplyShading>
-					<InternalLighting>OFF</InternalLighting>
-					<IgnoreSceneLights>false</IgnoreSceneLights>
-				</Figure3D>
-				<Figure3D>
-					<Id>1718046224400</Id>
-					<Name><![CDATA[bulk_carrier]]></Name>
-					<X>-1040</X><Y>980</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>-1040</X><Y>980</Y><Z>0</Z>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<ResourceReference>
-						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
-						<ClassName><![CDATA[3d/bulk_carrier.dae]]></ClassName>
-					</ResourceReference>
-					<ColorTable>
-						<ColorMapping>
-							<Name><![CDATA[MA_material]]></Name>
-							<OriginalColor>-11447983</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_30]]></Name>
-							<OriginalColor>-8501698</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_27]]></Name>
-							<OriginalColor>-6713989</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_29]]></Name>
-							<OriginalColor>-11198191</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_jean_blue]]></Name>
-							<OriginalColor>-14471614</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_28]]></Name>
-							<OriginalColor>-5131855</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_9]]></Name>
-							<OriginalColor>-16777216</OriginalColor>
-						</ColorMapping>
-					</ColorTable>
-					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
-					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
-					<ApplyShading>true</ApplyShading>
-					<InternalLighting>OFF</InternalLighting>
-					<IgnoreSceneLights>false</IgnoreSceneLights>
-				</Figure3D>
 			</Presentation>
 
 				</Level>
@@ -2606,26 +3055,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<EmbeddedObjectPresentation>
 					<Id>1717855024717</Id>
 					<Name><![CDATA[containerShips_presentation]]></Name>
-					<X>-700</X><Y>70</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
-					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
-					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
-					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>0.0</Latitude>
-					<Longitude>0.0</Longitude>
-				</EmbeddedObjectPresentation>
-				<EmbeddedObjectPresentation>
-					<Id>1717855094070</Id>
-					<Name><![CDATA[livestockCarriers_presentation]]></Name>
-					<X>-180</X><Y>290</Y>
+					<X>10</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2644,7 +3074,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<EmbeddedObjectPresentation>
 					<Id>1717911424042</Id>
 					<Name><![CDATA[bulkCarrierShips_presentation]]></Name>
-					<X>-480</X><Y>-300</Y>
+					<X>-320</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2814,7 +3244,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<Variable Class="PlainVariable">
 					<Id>1718859303274</Id>
 					<Name><![CDATA[effectiveTime]]></Name>
-					<X>-170</X><Y>260</Y>
+					<X>670</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2823,10 +3253,22 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1719590936106</Id>
+					<Name><![CDATA[currentDock]]></Name>
+					<X>280</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[DockKapal]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1718859394923</Id>
 					<Name><![CDATA[unloadingRate]]></Name>
-					<X>-170</X><Y>340</Y>
+					<X>670</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2835,6 +3277,9 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[100]]></Code>
+						</DefaultValue>
 						<ParameterEditor>
 							<Id>1718859394921</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -2849,7 +3294,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1718858603901</Id>
 					<Name><![CDATA[Arrival]]></Name>
-					<X>-390</X><Y>210</Y>
+					<X>450</X><Y>160</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2861,7 +3306,7 @@ gc.GCName.setText( "gc_" + gc.getIndex());]]></Action>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1718858612301</Id>
 					<Name><![CDATA[Labuh]]></Name>
-					<X>-390</X><Y>280</Y>
+					<X>450</X><Y>230</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2876,15 +3321,15 @@ send("check request", main.port1);]]></EntryAction>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1718858621659</Id>
 					<Name><![CDATA[AP1]]></Name>
-					<X>-390</X><Y>350</Y>
+					<X>450</X><Y>300</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="30">
 						<EntryAction><![CDATA[traceln("Entering AP1");
-setRotation(1);
-moveTo(main.dockingNode);]]></EntryAction>
+assignDock();
+moveTo(currentDock);]]></EntryAction>
 						<ExitAction><![CDATA[WaitingTime = time(MINUTE) - WaitingTime;]]></ExitAction>
 						<FillColor/>
 					</Properties>
@@ -2892,7 +3337,7 @@ moveTo(main.dockingNode);]]></EntryAction>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1718858639110</Id>
 					<Name><![CDATA[NOT1]]></Name>
-					<X>-390</X><Y>420</Y>
+					<X>450</X><Y>370</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2908,7 +3353,7 @@ BerthingTime = time(MINUTE);]]></EntryAction>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1718858650329</Id>
 					<Name><![CDATA[UNLOAD]]></Name>
-					<X>-390</X><Y>490</Y>
+					<X>450</X><Y>440</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2920,7 +3365,7 @@ BerthingTime = time(MINUTE);]]></EntryAction>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1718858662791</Id>
 					<Name><![CDATA[NOT2]]></Name>
-					<X>-390</X><Y>560</Y>
+					<X>450</X><Y>510</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2932,15 +3377,16 @@ BerthingTime = time(MINUTE);]]></EntryAction>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1718858707219</Id>
 					<Name><![CDATA[AP2]]></Name>
-					<X>-390</X><Y>630</Y>
+					<X>450</X><Y>580</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="30">
 						<EntryAction><![CDATA[traceln("Entering AT2");
-BerthingTime=time(HOUR)-BerthingTime;
+BerthingTime=time(MINUTE)-BerthingTime;
 moveTo(main.departureNode);
+currentDock.isOccupied = false;
 main.port1.receive("check request");
 main.dataset1.add(WaitingTime, BerthingTime);]]></EntryAction>
 						<ExitAction><![CDATA[send("depart", main.port1);
@@ -2951,7 +3397,7 @@ main.port1.shipDeparted(this);]]></ExitAction>
 				<StatechartElement Class="FinalState" ParentState="ROOT_NODE">
 					<Id>1718859680434</Id>
 					<Name><![CDATA[finalState]]></Name>
-					<X>-350</X><Y>710</Y>
+					<X>490</X><Y>660</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2964,7 +3410,7 @@ main.remove_generalCargoShips(this);]]></Action>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1717855274606</Id>
 					<Name><![CDATA[statechart]]></Name>
-					<X>-350</X><Y>150</Y>
+					<X>490</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2979,7 +3425,7 @@ main.remove_generalCargoShips(this);]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718858772298</Id>
 					<Name><![CDATA[transition5]]></Name>
-					<X>-350</X><Y>240</Y>
+					<X>490</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3011,7 +3457,7 @@ WaitingTime = time(MINUTE);]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718858962581</Id>
 					<Name><![CDATA[request]]></Name>
-					<X>-340</X><Y>310</Y>
+					<X>505</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3041,7 +3487,7 @@ WaitingTime = time(MINUTE);]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718859096372</Id>
 					<Name><![CDATA[transition6]]></Name>
-					<X>-350</X><Y>380</Y>
+					<X>490</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3052,6 +3498,7 @@ WaitingTime = time(MINUTE);]]></Action>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1718858621659" Target="1718858639110" Trigger="arrival">
+						<Action><![CDATA[setRotation(90);]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -3071,7 +3518,7 @@ WaitingTime = time(MINUTE);]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718859532912</Id>
 					<Name><![CDATA[persiapan]]></Name>
-					<X>-350</X><Y>450</Y>
+					<X>490</X><Y>400</Y>
 					<Label><X>10</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3100,20 +3547,20 @@ WaitingTime = time(MINUTE);]]></Action>
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718859557666</Id>
-					<Name><![CDATA[transition7]]></Name>
-					<X>-350</X><Y>520</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+					<Name><![CDATA[selesai]]></Name>
+					<X>490</X><Y>470</Y>
+					<Label><X>20</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
+					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>-1.1999999999999886</X><Y>40</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
+					<IconOffset>15.0</IconOffset>
 					<Properties Source="1718858650329" Target="1718858662791" Trigger="timeout">
 						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[uniform(1,2);]]></Code>
+							<Code><![CDATA[effectiveTime]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[true]]></Condition>
@@ -3131,7 +3578,7 @@ WaitingTime = time(MINUTE);]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718859577018</Id>
 					<Name><![CDATA[transition8]]></Name>
-					<X>-350</X><Y>590</Y>
+					<X>490</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3140,7 +3587,7 @@ WaitingTime = time(MINUTE);]]></Action>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>1.1999999999999886</X><Y>40</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
+					<IconOffset>15.0</IconOffset>
 					<Properties Source="1718858662791" Target="1718858707219" Trigger="timeout">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[notawal()]]></Code>
@@ -3161,7 +3608,7 @@ WaitingTime = time(MINUTE);]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718859684889</Id>
 					<Name><![CDATA[transition9]]></Name>
-					<X>-350</X><Y>660</Y>
+					<X>490</X><Y>610</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3170,7 +3617,7 @@ WaitingTime = time(MINUTE);]]></Action>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>0</X><Y>42</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
+					<IconOffset>15.0</IconOffset>
 					<Properties Source="1718858707219" Target="1718859680434" Trigger="arrival">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -3195,7 +3642,7 @@ WaitingTime = time(MINUTE);]]></Action>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1718859310099</Id>
 					<Name><![CDATA[calculateServiceTime]]></Name>
-					<X>-170</X><Y>300</Y>
+					<X>670</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3207,7 +3654,7 @@ WaitingTime = time(MINUTE);]]></Action>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1718949120480</Id>
 					<Name><![CDATA[sendrequest]]></Name>
-					<X>-170</X><Y>225</Y>
+					<X>670</X><Y>175</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3219,12 +3666,31 @@ WaitingTime = time(MINUTE);]]></Action>
 					<Body><![CDATA[main.port1.shipQueue.add(ship);
     send("check request", main.port1);]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1719590950702</Id>
+					<Name><![CDATA[assignDock]]></Name>
+					<X>280</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if (!main.port1.dockKapal1.isOccupied) {
+        currentDock = main.port1.dockKapal1;
+    } else if (!main.port1.dockKapal2.isOccupied) {
+        currentDock = main.port1.dockKapal2;
+    } else {
+        currentDock = main.port1.dockKapal3;
+    }
+    currentDock.isOccupied = true;]]></Body>
+				</Function>
 			</Functions>
 			<CustomDistributions>
 				<CustomDistribution>
 					<Id>1718859627376</Id>
 					<Name><![CDATA[notawal]]></Name>
-					<X>-160</X><Y>380</Y>
+					<X>680</X><Y>330</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4373,7 +4839,7 @@ WaitingTime = time(MINUTE);]]></Action>
 				<Text>
 					<Id>1718967065164</Id>
 					<Name><![CDATA[GCName]]></Name>
-					<X>-10</X><Y>20</Y>
+					<X>15</X><Y>30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4381,7 +4847,7 @@ WaitingTime = time(MINUTE);]]></Action>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Rotation>0.0</Rotation>
+					<Rotation>180.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[Nama]]></Text>
 					<Font>
@@ -4496,6 +4962,1540 @@ WaitingTime = time(MINUTE);]]></Action>
 			</ScaleRuler>
 			<CurrentLevel>1717855024682</CurrentLevel>
 			<ConnectionsId>1717855024676</ConnectionsId>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1719575700063</Id>
+					<Name><![CDATA[WaitingTime]]></Name>
+					<X>280</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1719575707994</Id>
+					<Name><![CDATA[BerthingTime]]></Name>
+					<X>280</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1719575715552</Id>
+					<Name><![CDATA[Kapasitas]]></Name>
+					<X>280</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1719575730583</Id>
+					<Name><![CDATA[LOA]]></Name>
+					<X>280</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1719576382669</Id>
+					<Name><![CDATA[effectiveTime]]></Name>
+					<X>800</X><Y>290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1719591488171</Id>
+					<Name><![CDATA[currentDock]]></Name>
+					<X>280</X><Y>510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[DockKapal]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1719576463300</Id>
+					<Name><![CDATA[unloadingRate]]></Name>
+					<X>810</X><Y>390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[100]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1719576463298</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
+			<StatechartElements>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1719575398254</Id>
+					<Name><![CDATA[Arrival]]></Name>
+					<X>560</X><Y>160</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1719575402653</Id>
+					<Name><![CDATA[Labuh]]></Name>
+					<X>560</X><Y>230</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<EntryAction><![CDATA[main.port1.sendrequest(this);
+send("check request", main.port1);]]></EntryAction>
+						<ExitAction><![CDATA[main.datasetPK.add(Kapasitas, unload);]]></ExitAction>
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1719575440833</Id>
+					<Name><![CDATA[AP1]]></Name>
+					<X>560</X><Y>290</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<EntryAction><![CDATA[traceln("Entering AP1");
+assignDock();
+moveTo(currentDock);]]></EntryAction>
+						<ExitAction><![CDATA[WaitingTime = time(MINUTE) - WaitingTime;]]></ExitAction>
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1719575456338</Id>
+					<Name><![CDATA[NOT1]]></Name>
+					<X>560</X><Y>360</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<EntryAction><![CDATA[send("arrived", main.port1);
+main.port1.shipArrived(this);
+calculateServiceTime();
+BerthingTime = time(MINUTE);]]></EntryAction>
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1719575465839</Id>
+					<Name><![CDATA[UNLOAD]]></Name>
+					<X>560</X><Y>440</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1719575484343</Id>
+					<Name><![CDATA[NOT2]]></Name>
+					<X>560</X><Y>520</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="ROOT_NODE">
+					<Id>1719575496770</Id>
+					<Name><![CDATA[AP2]]></Name>
+					<X>560</X><Y>590</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="100" Height="30">
+						<EntryAction><![CDATA[traceln("Entering AT2");
+BerthingTime=time(MINUTE)-BerthingTime;
+moveTo(main.departureNode);
+currentDock.isOccupied = false;
+main.port1.receive("check request");
+main.datasetPK2.add(WaitingTime, BerthingTime);]]></EntryAction>
+						<ExitAction><![CDATA[send("depart", main.port1);
+main.port1.shipDeparted(this);]]></ExitAction>
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="FinalState" ParentState="ROOT_NODE">
+					<Id>1719575512847</Id>
+					<Name><![CDATA[finalState]]></Name>
+					<X>600</X><Y>690</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Properties>	
+						<Action><![CDATA[traceln("PK out");
+main.remove_containerShips(this);]]></Action>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
+					<Id>1719575396040</Id>
+					<Name><![CDATA[statechart]]></Name>
+					<X>600</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>40</Y></Point>
+					</Points>
+					<Properties Target="1719575398254">
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1719575520279</Id>
+					<Name><![CDATA[transition]]></Name>
+					<X>600</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>1</X><Y>40</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1719575398254" Target="1719575402653" Trigger="message">
+						<Action><![CDATA[moveTo(main.labuhNode);
+WaitingTime = time(MINUTE);]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[equalsTo]]></FilterType>
+						<EqualsExpression><![CDATA["hey"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1719575524896</Id>
+					<Name><![CDATA[transition1]]></Name>
+					<X>600</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>2</X><Y>30</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1719575402653" Target="1719575440833" Trigger="message">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[equalsTo]]></FilterType>
+						<EqualsExpression><![CDATA["go to dock"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1719575529072</Id>
+					<Name><![CDATA[transition2]]></Name>
+					<X>600</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>2</X><Y>40</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1719575440833" Target="1719575456338" Trigger="arrival">
+						<Action><![CDATA[setRotation(90);]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1719575532793</Id>
+					<Name><![CDATA[transition3]]></Name>
+					<X>600</X><Y>390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>2</X><Y>50</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1719575456338" Target="1719575465839" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[3]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1719575537729</Id>
+					<Name><![CDATA[transition4]]></Name>
+					<X>600</X><Y>470</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>2</X><Y>50</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1719575465839" Target="1719575484343" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[effectiveTime]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1719575542442</Id>
+					<Name><![CDATA[transition5]]></Name>
+					<X>600</X><Y>550</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>1</X><Y>40</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1719575484343" Target="1719575496770" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[notakhir()]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
+					<Id>1719575548281</Id>
+					<Name><![CDATA[transition6]]></Name>
+					<X>600</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>62</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1719575496770" Target="1719575512847" Trigger="arrival">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+			</StatechartElements>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1719576374209</Id>
+					<Name><![CDATA[sendrequest]]></Name>
+					<X>800</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[ship]]></Name>
+						<Type><![CDATA[Ship]]></Type>
+					</Parameter>
+					<Body><![CDATA[main.port1.shipQueue.add(ship);
+    send("check request", main.port1);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1719576449482</Id>
+					<Name><![CDATA[calculateServiceTime]]></Name>
+					<X>800</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[effectiveTime = unload/unloadingRate;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1719591494631</Id>
+					<Name><![CDATA[assignDock]]></Name>
+					<X>280</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if (!main.port1.dockKapal1.isOccupied) {
+        currentDock = main.port1.dockKapal1;
+    } else if (!main.port1.dockKapal2.isOccupied) {
+        currentDock = main.port1.dockKapal2;
+    } else {
+        currentDock = main.port1.dockKapal3;
+    }
+    currentDock.isOccupied = true;]]></Body>
+				</Function>
+			</Functions>
+			<CustomDistributions>
+				<CustomDistribution>
+					<Id>1719576491444</Id>
+					<Name><![CDATA[notakhir]]></Name>
+					<X>820</X><Y>420</Y>
+					<Label><X>30</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type>CONTINUOUS</Type>
+					<DefinitionType>OBSERVED_SAMPLES</DefinitionType>
+					<IntegerValues>false</IntegerValues>
+					<Static>false</Static>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<RangesQuery>
+					<TableReference>
+					</TableReference>
+						<StartColumnReference>
+						</StartColumnReference>
+						<EndColumnReference>
+						</EndColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</RangesQuery>
+					<FrequencyQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</FrequencyQuery>
+					<SampleQuery>
+					<TableReference>
+					</TableReference>
+						<ValueColumnReference>
+						</ValueColumnReference>
+					</SampleQuery>
+					<OptionQuery>
+					<TableReference>
+					</TableReference>
+						<OptionColumnReference>
+						</OptionColumnReference>
+						<WeightColumnReference>
+						</WeightColumnReference>
+					</OptionQuery>										
+					<OptionListID><![CDATA[0]]></OptionListID>
+					<OptionValues>				
+					</OptionValues>
+					<SampleEntry>7.84</SampleEntry>
+					<SampleEntry>2.55</SampleEntry>
+					<SampleEntry>2.4</SampleEntry>
+					<SampleEntry>4.12</SampleEntry>
+					<SampleEntry>5.0</SampleEntry>
+					<SampleEntry>1.57</SampleEntry>
+					<SampleEntry>9.66</SampleEntry>
+					<SampleEntry>11.53</SampleEntry>
+					<SampleEntry>3.05</SampleEntry>
+					<SampleEntry>6.44</SampleEntry>
+					<SampleEntry>3.19</SampleEntry>
+					<SampleEntry>1.77</SampleEntry>
+					<SampleEntry>2.92</SampleEntry>
+					<SampleEntry>2.8</SampleEntry>
+					<SampleEntry>3.71</SampleEntry>
+					<SampleEntry>11.5</SampleEntry>
+					<SampleEntry>4.72</SampleEntry>
+					<SampleEntry>4.9</SampleEntry>
+					<SampleEntry>7.58</SampleEntry>
+					<SampleEntry>4.3</SampleEntry>
+					<SampleEntry>2.28</SampleEntry>
+					<SampleEntry>3.42</SampleEntry>
+					<SampleEntry>3.42</SampleEntry>
+					<SampleEntry>3.5</SampleEntry>
+					<SampleEntry>1.86</SampleEntry>
+					<SampleEntry>7.14</SampleEntry>
+					<SampleEntry>1.76</SampleEntry>
+					<SampleEntry>8.1</SampleEntry>
+					<SampleEntry>2.62</SampleEntry>
+					<SampleEntry>3.45</SampleEntry>
+					<SampleEntry>3.16</SampleEntry>
+					<SampleEntry>2.59</SampleEntry>
+					<SampleEntry>3.42</SampleEntry>
+					<SampleEntry>3.12</SampleEntry>
+					<SampleEntry>6.65</SampleEntry>
+					<SampleEntry>7.01</SampleEntry>
+					<SampleEntry>9.64</SampleEntry>
+					<SampleEntry>8.08</SampleEntry>
+					<SampleEntry>2.57</SampleEntry>
+					<SampleEntry>1.82</SampleEntry>
+					<SampleEntry>2.68</SampleEntry>
+					<SampleEntry>5.51</SampleEntry>
+					<SampleEntry>2.29</SampleEntry>
+					<SampleEntry>3.25</SampleEntry>
+					<SampleEntry>6.76</SampleEntry>
+					<SampleEntry>6.9</SampleEntry>
+					<SampleEntry>2.43</SampleEntry>
+					<SampleEntry>2.99</SampleEntry>
+					<SampleEntry>6.56</SampleEntry>
+					<SampleEntry>1.74</SampleEntry>
+					<SampleEntry>12.12</SampleEntry>
+					<SampleEntry>4.4</SampleEntry>
+					<SampleEntry>7.59</SampleEntry>
+					<SampleEntry>1.59</SampleEntry>
+					<SampleEntry>2.76</SampleEntry>
+					<SampleEntry>2.54</SampleEntry>
+					<SampleEntry>2.54</SampleEntry>
+					<SampleEntry>2.56</SampleEntry>
+					<SampleEntry>2.18</SampleEntry>
+					<SampleEntry>4.02</SampleEntry>
+					<SampleEntry>3.65</SampleEntry>
+					<SampleEntry>6.54</SampleEntry>
+					<SampleEntry>2.01</SampleEntry>
+					<SampleEntry>2.15</SampleEntry>
+					<SampleEntry>3.47</SampleEntry>
+					<SampleEntry>2.33</SampleEntry>
+					<SampleEntry>15.19</SampleEntry>
+					<SampleEntry>5.82</SampleEntry>
+					<SampleEntry>6.66</SampleEntry>
+					<SampleEntry>3.17</SampleEntry>
+					<SampleEntry>3.92</SampleEntry>
+					<SampleEntry>7.01</SampleEntry>
+					<SampleEntry>7.97</SampleEntry>
+					<SampleEntry>3.68</SampleEntry>
+					<SampleEntry>5.38</SampleEntry>
+					<SampleEntry>2.04</SampleEntry>
+					<SampleEntry>3.72</SampleEntry>
+					<SampleEntry>4.92</SampleEntry>
+					<SampleEntry>6.91</SampleEntry>
+					<SampleEntry>3.33</SampleEntry>
+					<SampleEntry>3.58</SampleEntry>
+					<SampleEntry>6.81</SampleEntry>
+					<SampleEntry>1.87</SampleEntry>
+					<SampleEntry>3.54</SampleEntry>
+					<SampleEntry>5.33</SampleEntry>
+					<SampleEntry>4.27</SampleEntry>
+					<SampleEntry>2.09</SampleEntry>
+					<SampleEntry>2.65</SampleEntry>
+					<SampleEntry>3.72</SampleEntry>
+					<SampleEntry>3.38</SampleEntry>
+					<SampleEntry>3.25</SampleEntry>
+					<SampleEntry>3.52</SampleEntry>
+					<SampleEntry>3.14</SampleEntry>
+					<SampleEntry>2.98</SampleEntry>
+					<SampleEntry>3.74</SampleEntry>
+					<SampleEntry>2.6</SampleEntry>
+					<SampleEntry>2.66</SampleEntry>
+					<SampleEntry>6.95</SampleEntry>
+					<SampleEntry>4.43</SampleEntry>
+					<SampleEntry>4.35</SampleEntry>
+					<SampleEntry>3.39</SampleEntry>
+					<SampleEntry>2.72</SampleEntry>
+					<SampleEntry>10.9</SampleEntry>
+					<SampleEntry>7.94</SampleEntry>
+					<SampleEntry>5.94</SampleEntry>
+					<SampleEntry>4.94</SampleEntry>
+					<SampleEntry>6.77</SampleEntry>
+					<SampleEntry>12.57</SampleEntry>
+					<SampleEntry>3.58</SampleEntry>
+					<SampleEntry>2.01</SampleEntry>
+					<SampleEntry>3.83</SampleEntry>
+					<SampleEntry>2.56</SampleEntry>
+					<SampleEntry>2.85</SampleEntry>
+					<SampleEntry>4.1</SampleEntry>
+					<SampleEntry>2.76</SampleEntry>
+					<SampleEntry>7.28</SampleEntry>
+					<SampleEntry>5.07</SampleEntry>
+					<SampleEntry>3.83</SampleEntry>
+					<SampleEntry>2.7</SampleEntry>
+					<SampleEntry>2.95</SampleEntry>
+					<SampleEntry>3.4</SampleEntry>
+					<SampleEntry>2.66</SampleEntry>
+					<SampleEntry>2.82</SampleEntry>
+					<SampleEntry>7.12</SampleEntry>
+					<SampleEntry>2.26</SampleEntry>
+					<SampleEntry>5.56</SampleEntry>
+					<SampleEntry>9.75</SampleEntry>
+					<SampleEntry>8.84</SampleEntry>
+					<SampleEntry>7.54</SampleEntry>
+					<SampleEntry>2.13</SampleEntry>
+					<SampleEntry>1.3</SampleEntry>
+					<SampleEntry>6.87</SampleEntry>
+					<SampleEntry>8.37</SampleEntry>
+					<SampleEntry>2.11</SampleEntry>
+					<SampleEntry>2.59</SampleEntry>
+					<SampleEntry>1.65</SampleEntry>
+					<SampleEntry>3.11</SampleEntry>
+					<SampleEntry>5.71</SampleEntry>
+					<SampleEntry>4.05</SampleEntry>
+					<SampleEntry>3.35</SampleEntry>
+					<SampleEntry>3.08</SampleEntry>
+					<SampleEntry>2.62</SampleEntry>
+					<SampleEntry>5.5</SampleEntry>
+					<SampleEntry>9.52</SampleEntry>
+					<SampleEntry>7.58</SampleEntry>
+					<SampleEntry>2.28</SampleEntry>
+					<SampleEntry>10.04</SampleEntry>
+					<SampleEntry>3.21</SampleEntry>
+					<SampleEntry>5.04</SampleEntry>
+					<SampleEntry>3.97</SampleEntry>
+					<SampleEntry>2.86</SampleEntry>
+					<SampleEntry>6.31</SampleEntry>
+					<SampleEntry>7.87</SampleEntry>
+					<SampleEntry>2.84</SampleEntry>
+					<SampleEntry>4.316666667</SampleEntry>
+					<SampleEntry>5.983333333</SampleEntry>
+					<SampleEntry>1.1</SampleEntry>
+					<SampleEntry>1.266666667</SampleEntry>
+					<SampleEntry>1.383333333</SampleEntry>
+					<SampleEntry>1.483333333</SampleEntry>
+					<SampleEntry>1.9</SampleEntry>
+					<SampleEntry>4.416666667</SampleEntry>
+					<SampleEntry>1.666666667</SampleEntry>
+					<SampleEntry>1.133333333</SampleEntry>
+					<SampleEntry>8.066666666</SampleEntry>
+					<SampleEntry>0.966666667</SampleEntry>
+					<SampleEntry>2.9</SampleEntry>
+					<SampleEntry>3.133333333</SampleEntry>
+					<SampleEntry>1.0</SampleEntry>
+					<SampleEntry>4.883333333</SampleEntry>
+					<SampleEntry>5.483333333</SampleEntry>
+					<SampleEntry>3.1</SampleEntry>
+					<SampleEntry>2.116666667</SampleEntry>
+					<SampleEntry>1.7</SampleEntry>
+					<SampleEntry>6.4</SampleEntry>
+					<SampleEntry>3.533333334</SampleEntry>
+					<SampleEntry>2.0</SampleEntry>
+					<SampleEntry>1.483333333</SampleEntry>
+					<SampleEntry>1.6</SampleEntry>
+					<SampleEntry>2.866666667</SampleEntry>
+					<SampleEntry>11.55</SampleEntry>
+					<SampleEntry>3.466666667</SampleEntry>
+					<SampleEntry>1.55</SampleEntry>
+					<SampleEntry>1.4</SampleEntry>
+					<SampleEntry>1.133333333</SampleEntry>
+					<SampleEntry>1.25</SampleEntry>
+					<SampleEntry>2.066666667</SampleEntry>
+					<SampleEntry>1.75</SampleEntry>
+					<SampleEntry>1.833333333</SampleEntry>
+					<SampleEntry>6.333333333</SampleEntry>
+					<SampleEntry>3.433333333</SampleEntry>
+					<SampleEntry>3.033333333</SampleEntry>
+					<SampleEntry>1.983333334</SampleEntry>
+					<SampleEntry>1.216666667</SampleEntry>
+					<SampleEntry>1.433333333</SampleEntry>
+					<SampleEntry>1.5</SampleEntry>
+					<SampleEntry>2.5</SampleEntry>
+					<SampleEntry>6.733333333</SampleEntry>
+					<SampleEntry>3.566666667</SampleEntry>
+					<SampleEntry>5.1</SampleEntry>
+					<SampleEntry>4.55</SampleEntry>
+					<SampleEntry>1.166666667</SampleEntry>
+					<SampleEntry>2.433333333</SampleEntry>
+					<SampleEntry>1.783333333</SampleEntry>
+					<SampleEntry>1.383333333</SampleEntry>
+					<SampleEntry>2.5</SampleEntry>
+					<SampleEntry>7.033333333</SampleEntry>
+					<SampleEntry>2.966666667</SampleEntry>
+					<SampleEntry>7.183333333</SampleEntry>
+					<SampleEntry>2.85</SampleEntry>
+					<SampleEntry>1.25</SampleEntry>
+					<SampleEntry>1.166666667</SampleEntry>
+					<SampleEntry>7.133333333</SampleEntry>
+					<SampleEntry>6.883333333</SampleEntry>
+					<SampleEntry>2.183333333</SampleEntry>
+					<SampleEntry>1.466666667</SampleEntry>
+					<SampleEntry>2.816666667</SampleEntry>
+					<SampleEntry>2.55</SampleEntry>
+					<SampleEntry>3.35</SampleEntry>
+					<SampleEntry>1.916666667</SampleEntry>
+					<SampleEntry>1.466666667</SampleEntry>
+					<SampleEntry>8.8</SampleEntry>
+					<SampleEntry>2.8</SampleEntry>
+					<SampleEntry>2.566666667</SampleEntry>
+					<SampleEntry>2.15</SampleEntry>
+					<SampleEntry>6.166666667</SampleEntry>
+					<SampleEntry>1.433333333</SampleEntry>
+					<SampleEntry>1.716666667</SampleEntry>
+					<SampleEntry>7.65</SampleEntry>
+					<SampleEntry>1.95</SampleEntry>
+					<SampleEntry>7.15</SampleEntry>
+					<SampleEntry>1.383333333</SampleEntry>
+					<SampleEntry>1.6</SampleEntry>
+					<SampleEntry>1.65</SampleEntry>
+					<SampleEntry>5.56</SampleEntry>
+					<SampleEntry>1.38</SampleEntry>
+					<SampleEntry>2.52</SampleEntry>
+					<SampleEntry>7.95</SampleEntry>
+					<SampleEntry>10.76</SampleEntry>
+					<SampleEntry>4.08</SampleEntry>
+					<SampleEntry>1.3</SampleEntry>
+					<SampleEntry>2.6</SampleEntry>
+					<SampleEntry>2.47</SampleEntry>
+					<SampleEntry>4.03</SampleEntry>
+					<SampleEntry>3.06</SampleEntry>
+					<SampleEntry>2.89</SampleEntry>
+					<SampleEntry>4.4</SampleEntry>
+					<SampleEntry>2.57</SampleEntry>
+					<SampleEntry>4.6</SampleEntry>
+					<SampleEntry>8.38</SampleEntry>
+					<SampleEntry>10.79</SampleEntry>
+					<SampleEntry>5.1</SampleEntry>
+					<SampleEntry>5.5</SampleEntry>
+					<SampleEntry>2.2</SampleEntry>
+					<SampleEntry>3.93</SampleEntry>
+					<SampleEntry>6.58</SampleEntry>
+					<SampleEntry>2.76</SampleEntry>
+					<SampleEntry>4.38</SampleEntry>
+					<SampleEntry>5.49</SampleEntry>
+					<SampleEntry>6.55</SampleEntry>
+					<SampleEntry>2.95</SampleEntry>
+					<SampleEntry>8.37</SampleEntry>
+					<SampleEntry>2.06</SampleEntry>
+					<SampleEntry>6.73</SampleEntry>
+					<SampleEntry>4.0</SampleEntry>
+					<SampleEntry>3.75</SampleEntry>
+					<SampleEntry>8.43</SampleEntry>
+					<SampleEntry>5.58</SampleEntry>
+					<SampleEntry>9.34</SampleEntry>
+					<SampleEntry>6.6</SampleEntry>
+					<SampleEntry>3.05</SampleEntry>
+					<SampleEntry>5.08</SampleEntry>
+					<SampleEntry>2.97</SampleEntry>
+					<SampleEntry>11.83</SampleEntry>
+					<SampleEntry>1.84</SampleEntry>
+					<SampleEntry>6.95</SampleEntry>
+					<SampleEntry>3.7</SampleEntry>
+					<SampleEntry>1.46</SampleEntry>
+					<SampleEntry>3.14</SampleEntry>
+					<SampleEntry>3.07</SampleEntry>
+					<SampleEntry>5.96</SampleEntry>
+					<SampleEntry>1.416666667</SampleEntry>
+					<SampleEntry>5.17</SampleEntry>
+					<SampleEntry>4.31</SampleEntry>
+					<SampleEntry>2.35</SampleEntry>
+					<SampleEntry>9.14</SampleEntry>
+					<SampleEntry>3.01</SampleEntry>
+					<SampleEntry>6.26</SampleEntry>
+					<SampleEntry>10.55</SampleEntry>
+					<SampleEntry>3.63</SampleEntry>
+					<SampleEntry>7.11</SampleEntry>
+					<SampleEntry>7.79</SampleEntry>
+					<SampleEntry>11.78</SampleEntry>
+					<SampleEntry>4.62</SampleEntry>
+					<SampleEntry>5.61</SampleEntry>
+					<SampleEntry>3.73</SampleEntry>
+					<SampleEntry>11.25</SampleEntry>
+					<SampleEntry>2.88</SampleEntry>
+					<SampleEntry>3.13</SampleEntry>
+					<SampleEntry>3.57</SampleEntry>
+					<SampleEntry>2.09</SampleEntry>
+					<SampleEntry>2.33</SampleEntry>
+					<SampleEntry>2.7</SampleEntry>
+					<SampleEntry>5.36</SampleEntry>
+					<SampleEntry>2.14</SampleEntry>
+					<SampleEntry>2.54</SampleEntry>
+					<SampleEntry>3.54</SampleEntry>
+					<SampleEntry>4.36</SampleEntry>
+					<SampleEntry>7.513333333</SampleEntry>
+					<SampleEntry>7.12</SampleEntry>
+					<SampleEntry>8.06</SampleEntry>
+					<SampleEntry>3.56</SampleEntry>
+					<SampleEntry>7.39</SampleEntry>
+					<SampleEntry>9.43</SampleEntry>
+					<SampleEntry>2.36</SampleEntry>
+					<SampleEntry>8.8</SampleEntry>
+					<SampleEntry>1.92</SampleEntry>
+					<SampleEntry>7.93</SampleEntry>
+					<SampleEntry>1.883333333</SampleEntry>
+					<SampleEntry>7.85</SampleEntry>
+					<SampleEntry>7.33</SampleEntry>
+					<SampleEntry>10.49</SampleEntry>
+					<SampleEntry>7.08</SampleEntry>
+					<SampleEntry>2.04</SampleEntry>
+					<SampleEntry>1.366666667</SampleEntry>
+					<SampleEntry>3.79</SampleEntry>
+					<SampleEntry>2.22</SampleEntry>
+					<SampleEntry>2.96</SampleEntry>
+					<SampleEntry>2.65</SampleEntry>
+					<SampleEntry>3.33</SampleEntry>
+					<SampleEntry>3.12</SampleEntry>
+					<SampleEntry>1.89</SampleEntry>
+					<SampleEntry>5.09</SampleEntry>
+					<SampleEntry>8.96</SampleEntry>
+					<SampleEntry>3.24</SampleEntry>
+					<SampleEntry>1.56</SampleEntry>
+					<SampleEntry>7.04</SampleEntry>
+					<SampleEntry>3.36</SampleEntry>
+					<SampleEntry>2.86</SampleEntry>
+					<SampleEntry>3.08</SampleEntry>
+					<SampleEntry>8.55</SampleEntry>
+					<SampleEntry>1.33</SampleEntry>
+					<SampleEntry>1.37</SampleEntry>
+					<SampleEntry>2.34</SampleEntry>
+					<SampleEntry>3.88</SampleEntry>
+					<SampleEntry>10.71</SampleEntry>
+					<SampleEntry>2.48</SampleEntry>
+					<SampleEntry>2.04</SampleEntry>
+					<SampleEntry>6.683333333</SampleEntry>
+					<SampleEntry>4.24</SampleEntry>
+					<SampleEntry>8.48</SampleEntry>
+					<SampleEntry>4.34</SampleEntry>
+					<SampleEntry>4.31</SampleEntry>
+					<SampleEntry>7.94</SampleEntry>
+					<SampleEntry>2.21</SampleEntry>
+					<SampleEntry>1.96</SampleEntry>
+					<SampleEntry>4.02</SampleEntry>
+					<SampleEntry>4.72</SampleEntry>
+					<SampleEntry>1.46</SampleEntry>
+					<SampleEntry>1.45</SampleEntry>
+					<SampleEntry>2.54</SampleEntry>
+					<SampleEntry>2.36</SampleEntry>
+					<SampleEntry>7.88</SampleEntry>
+					<SampleEntry>7.93</SampleEntry>
+					<SampleEntry>4.34</SampleEntry>
+					<SampleEntry>1.42</SampleEntry>
+					<SampleEntry>8.81</SampleEntry>
+					<SampleEntry>3.53</SampleEntry>
+					<SampleEntry>2.08</SampleEntry>
+					<SampleEntry>7.84</SampleEntry>
+					<SampleEntry>4.41</SampleEntry>
+					<SampleEntry>6.31</SampleEntry>
+					<SampleEntry>1.69</SampleEntry>
+					<SampleEntry>8.13</SampleEntry>
+					<SampleEntry>2.44</SampleEntry>
+					<SampleEntry>6.95</SampleEntry>
+					<SampleEntry>7.86</SampleEntry>
+					<SampleEntry>4.78</SampleEntry>
+					<SampleEntry>4.32</SampleEntry>
+					<SampleEntry>2.47</SampleEntry>
+					<SampleEntry>1.7</SampleEntry>
+					<SampleEntry>2.41</SampleEntry>
+					<SampleEntry>5.41</SampleEntry>
+					<SampleEntry>3.0</SampleEntry>
+					<SampleEntry>2.05</SampleEntry>
+					<SampleEntry>2.97</SampleEntry>
+					<SampleEntry>6.3</SampleEntry>
+					<SampleEntry>4.71</SampleEntry>
+					<SampleEntry>9.86</SampleEntry>
+					<SampleEntry>3.06</SampleEntry>
+					<SampleEntry>1.67</SampleEntry>
+					<SampleEntry>8.1</SampleEntry>
+					<SampleEntry>5.99</SampleEntry>
+					<SampleEntry>2.35</SampleEntry>
+					<SampleEntry>8.02</SampleEntry>
+					<SampleEntry>4.57</SampleEntry>
+					<SampleEntry>4.31</SampleEntry>
+					<SampleEntry>5.34</SampleEntry>
+					<SampleEntry>1.52</SampleEntry>
+					<SampleEntry>5.17</SampleEntry>
+					<SampleEntry>1.57</SampleEntry>
+					<SampleEntry>2.38</SampleEntry>
+					<SampleEntry>5.06</SampleEntry>
+					<SampleEntry>3.64</SampleEntry>
+					<SampleEntry>2.86</SampleEntry>
+					<SampleEntry>3.56</SampleEntry>
+					<SampleEntry>3.32</SampleEntry>
+					<SampleEntry>1.3</SampleEntry>
+					<SampleEntry>6.6</SampleEntry>
+					<SampleEntry>5.86</SampleEntry>
+					<SampleEntry>4.77</SampleEntry>
+					<SampleEntry>6.05</SampleEntry>
+					<SampleEntry>6.91</SampleEntry>
+					<SampleEntry>2.69</SampleEntry>
+					<SampleEntry>3.41</SampleEntry>
+					<SampleEntry>3.89</SampleEntry>
+					<SampleEntry>3.89</SampleEntry>
+					<SampleEntry>2.87</SampleEntry>
+					<SampleEntry>11.74</SampleEntry>
+					<SampleEntry>7.01</SampleEntry>
+					<SampleEntry>4.37</SampleEntry>
+					<SampleEntry>2.08</SampleEntry>
+					<SampleEntry>2.533333333</SampleEntry>
+					<SampleEntry>1.38</SampleEntry>
+					<SampleEntry>2.95</SampleEntry>
+					<SampleEntry>5.12</SampleEntry>
+					<SampleEntry>4.91</SampleEntry>
+					<SampleEntry>4.53</SampleEntry>
+					<SampleEntry>4.51</SampleEntry>
+					<SampleEntry>3.49</SampleEntry>
+					<SampleEntry>1.85</SampleEntry>
+					<SampleEntry>2.22</SampleEntry>
+					<SampleEntry>9.93</SampleEntry>
+					<SampleEntry>5.06</SampleEntry>
+					<SampleEntry>2.89</SampleEntry>
+					<SampleEntry>2.4</SampleEntry>
+					<SampleEntry>15.83</SampleEntry>
+					<SampleEntry>4.73</SampleEntry>
+					<SampleEntry>5.2</SampleEntry>
+					<SampleEntry>6.47</SampleEntry>
+					<SampleEntry>6.57</SampleEntry>
+					<SampleEntry>1.15</SampleEntry>
+					<SampleEntry>1.87</SampleEntry>
+					<SampleEntry>1.47</SampleEntry>
+					<SampleEntry>2.2</SampleEntry>
+					<SampleEntry>2.49</SampleEntry>
+					<SampleEntry>3.62</SampleEntry>
+					<SampleEntry>4.98</SampleEntry>
+					<SampleEntry>2.02</SampleEntry>
+					<SampleEntry>6.7</SampleEntry>
+					<SampleEntry>3.38</SampleEntry>
+					<SampleEntry>2.92</SampleEntry>
+					<SampleEntry>2.11</SampleEntry>
+					<SampleEntry>7.6</SampleEntry>
+					<SampleEntry>2.72</SampleEntry>
+					<SampleEntry>7.4</SampleEntry>
+					<SampleEntry>10.22</SampleEntry>
+					<SampleEntry>2.68</SampleEntry>
+					<SampleEntry>8.32</SampleEntry>
+					<SampleEntry>4.87</SampleEntry>
+					<SampleEntry>10.3</SampleEntry>
+					<SampleEntry>1.36</SampleEntry>
+					<SampleEntry>1.98</SampleEntry>
+					<SampleEntry>3.45</SampleEntry>
+					<SampleEntry>3.85</SampleEntry>
+					<SampleEntry>2.92</SampleEntry>
+					<SampleEntry>1.99</SampleEntry>
+					<SampleEntry>1.63</SampleEntry>
+					<SampleEntry>5.05</SampleEntry>
+					<SampleEntry>5.58</SampleEntry>
+					<SampleEntry>1.42</SampleEntry>
+					<SampleEntry>4.8</SampleEntry>
+					<SampleEntry>3.56</SampleEntry>
+					<SampleEntry>3.0</SampleEntry>
+					<SampleEntry>4.37</SampleEntry>
+					<SampleEntry>1.44</SampleEntry>
+					<SampleEntry>3.93</SampleEntry>
+					<SampleEntry>21.53</SampleEntry>
+					<SampleEntry>1.5</SampleEntry>
+					<SampleEntry>3.22</SampleEntry>
+					<SampleEntry>13.2</SampleEntry>
+					<SampleEntry>3.43</SampleEntry>
+					<SampleEntry>1.5</SampleEntry>
+					<SampleEntry>3.59</SampleEntry>
+					<SampleEntry>3.94</SampleEntry>
+					<SampleEntry>7.28</SampleEntry>
+					<SampleEntry>1.68</SampleEntry>
+					<SampleEntry>11.08</SampleEntry>
+					<SampleEntry>3.27</SampleEntry>
+					<SampleEntry>2.16</SampleEntry>
+					<SampleEntry>2.61</SampleEntry>
+					<SampleEntry>2.2</SampleEntry>
+					<SampleEntry>4.27</SampleEntry>
+					<SampleEntry>1.91</SampleEntry>
+					<SampleEntry>1.98</SampleEntry>
+					<SampleEntry>0.75</SampleEntry>
+					<SampleEntry>2.38</SampleEntry>
+					<SampleEntry>8.25</SampleEntry>
+					<SampleEntry>6.04</SampleEntry>
+					<SampleEntry>2.71</SampleEntry>
+					<SampleEntry>2.11</SampleEntry>
+					<SampleEntry>3.8</SampleEntry>
+					<SampleEntry>1.19</SampleEntry>
+					<SampleEntry>5.98</SampleEntry>
+					<SampleEntry>1.11</SampleEntry>
+					<SampleEntry>0.93</SampleEntry>
+					<SampleEntry>10.02</SampleEntry>
+					<SampleEntry>2.29</SampleEntry>
+					<SampleEntry>2.37</SampleEntry>
+					<SampleEntry>2.95</SampleEntry>
+					<SampleEntry>1.57</SampleEntry>
+					<SampleEntry>4.11</SampleEntry>
+					<SampleEntry>1.46</SampleEntry>
+					<SampleEntry>4.18</SampleEntry>
+					<SampleEntry>3.76</SampleEntry>
+					<SampleEntry>1.53</SampleEntry>
+					<SampleEntry>3.08</SampleEntry>
+					<SampleEntry>6.06</SampleEntry>
+					<SampleEntry>8.28</SampleEntry>
+					<SampleEntry>4.75</SampleEntry>
+					<SampleEntry>2.3</SampleEntry>
+					<SampleEntry>2.06</SampleEntry>
+					<SampleEntry>6.58</SampleEntry>
+					<SampleEntry>3.62</SampleEntry>
+					<SampleEntry>2.26</SampleEntry>
+					<SampleEntry>1.66</SampleEntry>
+					<SampleEntry>1.79</SampleEntry>
+					<SampleEntry>3.89</SampleEntry>
+					<SampleEntry>9.66</SampleEntry>
+					<SampleEntry>2.71</SampleEntry>
+					<SampleEntry>9.37</SampleEntry>
+					<SampleEntry>1.32</SampleEntry>
+					<SampleEntry>3.6</SampleEntry>
+					<SampleEntry>1.566666667</SampleEntry>
+					<SampleEntry>4.633333333</SampleEntry>
+					<SampleEntry>1.316666667</SampleEntry>
+					<SampleEntry>0.916666667</SampleEntry>
+					<SampleEntry>1.933333333</SampleEntry>
+					<SampleEntry>3.016666667</SampleEntry>
+					<SampleEntry>3.666666667</SampleEntry>
+					<SampleEntry>5.016666667</SampleEntry>
+					<SampleEntry>6.483333333</SampleEntry>
+					<SampleEntry>1.9</SampleEntry>
+					<SampleEntry>6.566666667</SampleEntry>
+					<SampleEntry>7.533333333</SampleEntry>
+					<SampleEntry>1.683333333</SampleEntry>
+					<SampleEntry>7.483333333</SampleEntry>
+					<SampleEntry>7.533333333</SampleEntry>
+					<SampleEntry>5.25</SampleEntry>
+					<SampleEntry>7.766666667</SampleEntry>
+					<SampleEntry>10.61666667</SampleEntry>
+					<SampleEntry>2.0</SampleEntry>
+					<SampleEntry>1.916666667</SampleEntry>
+					<SampleEntry>1.783333333</SampleEntry>
+					<SampleEntry>8.133333333</SampleEntry>
+					<SampleEntry>2.233333333</SampleEntry>
+					<SampleEntry>12.71666667</SampleEntry>
+					<SampleEntry>1.966666667</SampleEntry>
+					<SampleEntry>5.033333333</SampleEntry>
+					<SampleEntry>6.55</SampleEntry>
+					<SampleEntry>4.516666667</SampleEntry>
+					<SampleEntry>4.25</SampleEntry>
+					<SampleEntry>3.3</SampleEntry>
+					<SampleEntry>1.45</SampleEntry>
+					<SampleEntry>7.2</SampleEntry>
+					<SampleEntry>4.016666667</SampleEntry>
+					<SampleEntry>3.45</SampleEntry>
+					<SampleEntry>11.3</SampleEntry>
+					<SampleEntry>0.85</SampleEntry>
+					<SampleEntry>2.216666667</SampleEntry>
+					<SampleEntry>2.066666667</SampleEntry>
+					<SampleEntry>5.116666666</SampleEntry>
+					<SampleEntry>1.666666667</SampleEntry>
+					<SampleEntry>2.4</SampleEntry>
+					<SampleEntry>10.36666667</SampleEntry>
+					<SampleEntry>5.3</SampleEntry>
+					<SampleEntry>7.566666667</SampleEntry>
+					<SampleEntry>9.05</SampleEntry>
+					<SampleEntry>7.166666667</SampleEntry>
+					<SampleEntry>3.116666667</SampleEntry>
+					<SampleEntry>4.216666667</SampleEntry>
+					<SampleEntry>2.166666667</SampleEntry>
+					<SampleEntry>2.333333333</SampleEntry>
+					<SampleEntry>1.933333333</SampleEntry>
+					<SampleEntry>3.466666667</SampleEntry>
+					<SampleEntry>9.066666667</SampleEntry>
+					<SampleEntry>2.8</SampleEntry>
+					<SampleEntry>6.133333333</SampleEntry>
+					<SampleEntry>3.85</SampleEntry>
+					<SampleEntry>4.466666666</SampleEntry>
+					<SampleEntry>3.75</SampleEntry>
+					<SampleEntry>2.783333333</SampleEntry>
+					<SampleEntry>1.816666667</SampleEntry>
+					<SampleEntry>1.85</SampleEntry>
+					<SampleEntry>1.783333333</SampleEntry>
+					<SampleEntry>3.583333333</SampleEntry>
+					<SampleEntry>2.783333333</SampleEntry>
+					<SampleEntry>4.033333333</SampleEntry>
+					<SampleEntry>4.266666667</SampleEntry>
+					<SampleEntry>5.2</SampleEntry>
+					<SampleEntry>3.15</SampleEntry>
+					<SampleEntry>8.3</SampleEntry>
+					<SampleEntry>4.066666667</SampleEntry>
+					<SampleEntry>1.616666667</SampleEntry>
+					<SampleEntry>3.083333333</SampleEntry>
+					<SampleEntry>3.0</SampleEntry>
+					<SampleEntry>1.433333333</SampleEntry>
+					<SampleEntry>2.733333333</SampleEntry>
+					<SampleEntry>4.05</SampleEntry>
+					<SampleEntry>1.283333333</SampleEntry>
+					<SampleEntry>3.3</SampleEntry>
+					<SampleEntry>10.58333333</SampleEntry>
+					<SampleEntry>2.233333333</SampleEntry>
+					<SampleEntry>8.6</SampleEntry>
+					<SampleEntry>9.566666667</SampleEntry>
+					<SampleEntry>1.75</SampleEntry>
+					<SampleEntry>2.266666667</SampleEntry>
+					<SampleEntry>2.133333333</SampleEntry>
+					<SampleEntry>2.266666667</SampleEntry>
+					<SampleEntry>4.516666667</SampleEntry>
+					<SampleEntry>9.266666667</SampleEntry>
+					<SampleEntry>4.366666667</SampleEntry>
+					<SampleEntry>3.616666667</SampleEntry>
+					<SampleEntry>3.483333333</SampleEntry>
+					<SampleEntry>3.1</SampleEntry>
+					<SampleEntry>6.116666667</SampleEntry>
+					<SampleEntry>5.233333333</SampleEntry>
+					<SampleEntry>2.2</SampleEntry>
+					<SampleEntry>3.283333333</SampleEntry>
+					<SampleEntry>1.616666667</SampleEntry>
+					<SampleEntry>3.166666667</SampleEntry>
+					<SampleEntry>3.3</SampleEntry>
+					<SampleEntry>7.016666667</SampleEntry>
+					<SampleEntry>4.266666667</SampleEntry>
+					<SampleEntry>0.866666667</SampleEntry>
+					<SampleEntry>2.5</SampleEntry>
+					<SampleEntry>5.05</SampleEntry>
+					<SampleEntry>1.383333334</SampleEntry>
+					<SampleEntry>1.916666667</SampleEntry>
+					<SampleEntry>2.416666667</SampleEntry>
+					<SampleEntry>5.6</SampleEntry>
+					<SampleEntry>2.35</SampleEntry>
+					<SampleEntry>3.066666667</SampleEntry>
+					<SampleEntry>4.083333333</SampleEntry>
+					<SampleEntry>2.133333333</SampleEntry>
+					<SampleEntry>5.016666667</SampleEntry>
+					<SampleEntry>1.783333334</SampleEntry>
+					<SampleEntry>1.366666667</SampleEntry>
+					<SampleEntry>6.466666667</SampleEntry>
+					<SampleEntry>5.7</SampleEntry>
+					<SampleEntry>5.833333333</SampleEntry>
+					<SampleEntry>4.233333333</SampleEntry>
+					<SampleEntry>5.1</SampleEntry>
+					<SampleEntry>3.65</SampleEntry>
+					<SampleEntry>5.4</SampleEntry>
+					<SampleEntry>7.533333333</SampleEntry>
+					<SampleEntry>1.7</SampleEntry>
+					<SampleEntry>4.066666667</SampleEntry>
+					<SampleEntry>4.483333333</SampleEntry>
+					<SampleEntry>1.083333333</SampleEntry>
+					<SampleEntry>1.116666667</SampleEntry>
+					<SampleEntry>5.316666667</SampleEntry>
+					<SampleEntry>2.9</SampleEntry>
+					<SampleEntry>1.966666666</SampleEntry>
+					<SampleEntry>3.6</SampleEntry>
+					<SampleEntry>3.016666667</SampleEntry>
+					<SampleEntry>1.7</SampleEntry>
+					<SampleEntry>1.683333333</SampleEntry>
+					<SampleEntry>2.366666667</SampleEntry>
+					<SampleEntry>2.816666667</SampleEntry>
+					<SampleEntry>1.316666667</SampleEntry>
+					<SampleEntry>5.733333333</SampleEntry>
+					<SampleEntry>3.066666667</SampleEntry>
+					<SampleEntry>3.933333333</SampleEntry>
+					<SampleEntry>5.066666667</SampleEntry>
+					<SampleEntry>2.933333333</SampleEntry>
+					<SampleEntry>5.066666667</SampleEntry>
+					<SampleEntry>1.616666667</SampleEntry>
+					<SampleEntry>1.416666667</SampleEntry>
+					<SampleEntry>2.716666667</SampleEntry>
+					<SampleEntry>1.716666667</SampleEntry>
+					<SampleEntry>2.116666667</SampleEntry>
+					<SampleEntry>6.566666667</SampleEntry>
+					<SampleEntry>2.183333333</SampleEntry>
+					<SampleEntry>3.116666666</SampleEntry>
+					<SampleEntry>4.583333333</SampleEntry>
+					<SampleEntry>3.766666666</SampleEntry>
+					<SampleEntry>5.216666667</SampleEntry>
+					<SampleEntry>2.75</SampleEntry>
+					<SampleEntry>6.266666667</SampleEntry>
+					<SampleEntry>8.116666667</SampleEntry>
+					<SampleEntry>3.083333333</SampleEntry>
+					<SampleEntry>7.833333333</SampleEntry>
+					<SampleEntry>2.8</SampleEntry>
+					<SampleEntry>11.46666667</SampleEntry>
+					<SampleEntry>5.15</SampleEntry>
+					<SampleEntry>1.466666667</SampleEntry>
+					<SampleEntry>10.3</SampleEntry>
+					<SampleEntry>11.7</SampleEntry>
+					<SampleEntry>1.633333333</SampleEntry>
+					<SampleEntry>4.95</SampleEntry>
+					<SampleEntry>2.633333333</SampleEntry>
+					<SampleEntry>3.383333333</SampleEntry>
+					<SampleEntry>4.683333333</SampleEntry>
+					<SampleEntry>1.733333333</SampleEntry>
+					<SampleEntry>3.583333333</SampleEntry>
+					<SampleEntry>1.866666667</SampleEntry>
+					<SampleEntry>4.0</SampleEntry>
+					<SampleEntry>1.65</SampleEntry>
+					<SampleEntry>5.466666667</SampleEntry>
+					<SampleEntry>2.416666667</SampleEntry>
+					<SampleEntry>5.0</SampleEntry>
+					<SampleEntry>4.533333333</SampleEntry>
+					<SampleEntry>3.183333333</SampleEntry>
+					<SampleEntry>6.6</SampleEntry>
+					<SampleEntry>1.333333333</SampleEntry>
+					<SampleEntry>2.366666667</SampleEntry>
+					<SampleEntry>10.1</SampleEntry>
+					<SampleEntry>4.533333333</SampleEntry>
+					<SampleEntry>3.633333333</SampleEntry>
+					<SampleEntry>8.9</SampleEntry>
+					<SampleEntry>5.366666666</SampleEntry>
+					<SampleEntry>8.533333333</SampleEntry>
+					<SampleEntry>2.466666667</SampleEntry>
+					<SampleEntry>1.3</SampleEntry>
+					<SampleEntry>1.583333333</SampleEntry>
+					<SampleEntry>2.633333333</SampleEntry>
+					<SampleEntry>2.65</SampleEntry>
+					<SampleEntry>3.333333333</SampleEntry>
+					<SampleEntry>1.616666667</SampleEntry>
+					<SampleEntry>3.683333333</SampleEntry>
+					<SampleEntry>4.033333333</SampleEntry>
+					<SampleEntry>2.316666667</SampleEntry>
+					<SampleEntry>3.283333333</SampleEntry>
+					<SampleEntry>1.966666667</SampleEntry>
+					<SampleEntry>1.4</SampleEntry>
+					<SampleEntry>1.8</SampleEntry>
+					<SampleEntry>4.466666667</SampleEntry>
+					<SampleEntry>2.783333333</SampleEntry>
+					<SampleEntry>2.9</SampleEntry>
+					<SampleEntry>13.66666667</SampleEntry>
+					<SampleEntry>3.733333333</SampleEntry>
+					<SampleEntry>1.716666667</SampleEntry>
+					<SampleEntry>4.066666667</SampleEntry>
+					<SampleEntry>5.766666667</SampleEntry>
+					<SampleEntry>3.85</SampleEntry>
+					<SampleEntry>2.316666667</SampleEntry>
+					<SampleEntry>9.116666667</SampleEntry>
+					<SampleEntry>5.033333334</SampleEntry>
+					<SampleEntry>4.55</SampleEntry>
+					<SampleEntry>2.016666667</SampleEntry>
+					<SampleEntry>5.333333333</SampleEntry>
+					<SampleEntry>2.933333333</SampleEntry>
+					<SampleEntry>6.183333333</SampleEntry>
+					<SampleEntry>3.183333334</SampleEntry>
+					<SampleEntry>7.366666667</SampleEntry>
+					<SampleEntry>5.6</SampleEntry>
+					<SampleEntry>3.3</SampleEntry>
+					<SampleEntry>1.883333333</SampleEntry>
+					<SampleEntry>3.883333333</SampleEntry>
+					<SampleEntry>2.416666667</SampleEntry>
+					<SampleEntry>1.55</SampleEntry>
+					<SampleEntry>2.766666666</SampleEntry>
+					<SampleEntry>1.55</SampleEntry>
+					<SampleEntry>7.8</SampleEntry>
+					<SampleEntry>3.116666667</SampleEntry>
+					<SampleEntry>2.45</SampleEntry>
+					<SampleEntry>1.933333333</SampleEntry>
+					<SampleEntry>7.583333333</SampleEntry>
+					<SampleEntry>3.25</SampleEntry>
+					<SampleEntry>2.583333333</SampleEntry>
+					<SampleEntry>1.266666667</SampleEntry>
+					<SampleEntry>2.383333333</SampleEntry>
+					<SampleEntry>1.566666667</SampleEntry>
+					<SampleEntry>10.2</SampleEntry>
+					<SampleEntry>12.0</SampleEntry>
+					<SampleEntry>3.866666667</SampleEntry>
+					<SampleEntry>3.033333333</SampleEntry>
+					<SampleEntry>7.933333333</SampleEntry>
+					<SampleEntry>2.2</SampleEntry>
+					<SampleEntry>3.116666667</SampleEntry>
+					<SampleEntry>5.5</SampleEntry>
+					<SampleEntry>1.25</SampleEntry>
+					<SampleEntry>2.016666667</SampleEntry>
+					<SampleEntry>6.383333333</SampleEntry>
+					<SampleEntry>1.95</SampleEntry>
+					<SampleEntry>1.583333333</SampleEntry>
+					<SampleEntry>2.2</SampleEntry>
+					<SampleEntry>4.866666667</SampleEntry>
+					<SampleEntry>3.3</SampleEntry>
+					<SampleEntry>3.216666667</SampleEntry>
+					<SampleEntry>1.716666667</SampleEntry>
+					<SampleEntry>4.216666667</SampleEntry>
+					<SampleEntry>1.533333333</SampleEntry>
+					<SampleEntry>1.783333333</SampleEntry>
+					<SampleEntry>3.766666667</SampleEntry>
+					<SampleEntry>2.45</SampleEntry>
+					<SampleEntry>3.483333333</SampleEntry>
+					<SampleEntry>2.033333333</SampleEntry>
+					<SampleEntry>5.216666667</SampleEntry>
+					<SampleEntry>5.116666667</SampleEntry>
+					<SampleEntry>2.95</SampleEntry>
+					<SampleEntry>2.366666667</SampleEntry>
+					<SampleEntry>2.15</SampleEntry>
+					<SampleEntry>1.9</SampleEntry>
+					<SampleEntry>1.633333333</SampleEntry>
+					<SampleEntry>3.25</SampleEntry>
+					<SampleEntry>2.383333333</SampleEntry>
+					<SampleEntry>3.25</SampleEntry>
+					<SampleEntry>5.683333333</SampleEntry>
+					<SampleEntry>2.283333333</SampleEntry>
+					<SampleEntry>1.95</SampleEntry>
+					<SampleEntry>2.016666667</SampleEntry>
+					<SampleEntry>6.183333333</SampleEntry>
+					<SampleEntry>2.883333333</SampleEntry>
+					<SampleEntry>5.366666666</SampleEntry>
+					<SampleEntry>4.816666667</SampleEntry>
+					<SampleEntry>6.216666667</SampleEntry>
+					<SampleEntry>1.433333333</SampleEntry>
+					<SampleEntry>4.083333333</SampleEntry>
+					<SampleEntry>6.75</SampleEntry>
+					<SampleEntry>1.083333333</SampleEntry>
+					<SampleEntry>2.066666667</SampleEntry>
+					<SampleEntry>2.25</SampleEntry>
+					<SampleEntry>2.6</SampleEntry>
+					<SampleEntry>8.3</SampleEntry>
+					<SampleEntry>2.833333333</SampleEntry>
+					<SampleEntry>1.433333333</SampleEntry>
+					<SampleEntry>1.416666667</SampleEntry>
+					<SampleEntry>8.033333333</SampleEntry>
+					<SampleEntry>7.233333333</SampleEntry>
+					<SampleEntry>5.833333333</SampleEntry>
+					<SampleEntry>6.816666667</SampleEntry>
+					<SampleEntry>2.616666667</SampleEntry>
+					<SampleEntry>3.05</SampleEntry>
+					<SampleEntry>2.716666667</SampleEntry>
+					<SampleEntry>2.783333333</SampleEntry>
+					<SampleEntry>10.95</SampleEntry>
+					<SampleEntry>1.7</SampleEntry>
+					<SampleEntry>1.6</SampleEntry>
+					<SampleEntry>4.483333333</SampleEntry>
+					<SampleEntry>2.083333333</SampleEntry>
+					<SampleEntry>10.86666667</SampleEntry>
+					<SampleEntry>3.816666667</SampleEntry>
+					<SampleEntry>8.6</SampleEntry>
+					<SampleEntry>3.25</SampleEntry>
+					<SampleEntry>9.616666667</SampleEntry>
+					<SampleEntry>3.483333334</SampleEntry>
+					<SampleEntry>4.4</SampleEntry>
+					<SampleEntry>8.0</SampleEntry>
+					<SampleEntry>5.216666667</SampleEntry>
+					<SampleEntry>4.45</SampleEntry>
+					<SampleEntry>2.35</SampleEntry>
+					<SampleEntry>2.816666667</SampleEntry>
+					<SampleEntry>2.4</SampleEntry>
+					<SampleEntry>3.133333333</SampleEntry>
+					<SampleEntry>3.35</SampleEntry>
+					<SampleEntry>14.78333333</SampleEntry>
+					<SampleEntry>8.616666667</SampleEntry>
+					<SampleEntry>2.366666667</SampleEntry>
+					<SampleEntry>2.75</SampleEntry>
+					<SampleEntry>1.483333333</SampleEntry>
+					<SampleEntry>4.6</SampleEntry>
+					<SampleEntry>2.566666666</SampleEntry>
+					<SampleEntry>1.75</SampleEntry>
+					<SampleEntry>2.75</SampleEntry>
+					<SampleEntry>2.75</SampleEntry>
+					<SampleEntry>5.166666667</SampleEntry>
+					<SampleEntry>3.383333333</SampleEntry>
+					<SampleEntry>1.65</SampleEntry>
+					<SampleEntry>5.516666667</SampleEntry>
+					<SampleEntry>3.3</SampleEntry>
+					<SampleEntry>1.366666667</SampleEntry>
+					<SampleEntry>0.883333333</SampleEntry>
+					<SampleEntry>1.783333333</SampleEntry>
+					<SampleEntry>10.58333333</SampleEntry>
+					<SampleEntry>4.233333334</SampleEntry>
+					<SampleEntry>5.75</SampleEntry>
+					<SampleEntry>3.9</SampleEntry>
+					<SampleEntry>6.95</SampleEntry>
+					<SampleEntry>12.25</SampleEntry>
+					<SampleEntry>2.3</SampleEntry>
+					<SampleEntry>2.766666666</SampleEntry>
+					<SampleEntry>3.45</SampleEntry>
+					<SampleEntry>2.816666667</SampleEntry>
+					<SampleEntry>6.583333333</SampleEntry>
+					<SampleEntry>2.166666667</SampleEntry>
+					<SampleEntry>1.4</SampleEntry>
+					<SampleEntry>1.683333333</SampleEntry>
+					<SampleEntry>2.433333333</SampleEntry>
+					<SampleEntry>3.766666667</SampleEntry>
+					<SampleEntry>4.433333333</SampleEntry>
+					<SampleEntry>2.85</SampleEntry>
+					<SampleEntry>1.716666667</SampleEntry>
+					<SampleEntry>2.816666667</SampleEntry>
+					<SampleEntry>7.766666667</SampleEntry>
+					<SampleEntry>4.3</SampleEntry>
+					<SampleEntry>1.65</SampleEntry>
+					<SampleEntry>1.733333333</SampleEntry>
+					<SampleEntry>2.0</SampleEntry>
+					<SampleEntry>3.033333333</SampleEntry>
+					<SampleEntry>1.816666667</SampleEntry>
+					<SampleEntry>1.433333333</SampleEntry>
+					<SampleEntry>2.48</SampleEntry>
+					<SampleEntry>2.006666667</SampleEntry>
+					<SampleEntry>4.046666667</SampleEntry>
+					<SampleEntry>7.046666667</SampleEntry>
+					<SampleEntry>3.546666667</SampleEntry>
+					<SampleEntry>3.246666667</SampleEntry>
+					<SampleEntry>3.59</SampleEntry>
+					<SampleEntry>4.496666667</SampleEntry>
+					<SampleEntry>10.86666667</SampleEntry>
+					<SampleEntry>2.78</SampleEntry>
+					<SampleEntry>3.193333333</SampleEntry>
+					<SampleEntry>1.993333333</SampleEntry>
+					<SampleEntry>3.536666667</SampleEntry>
+					<SampleEntry>1.973333334</SampleEntry>
+					<SampleEntry>3.09</SampleEntry>
+					<SampleEntry>2.346666667</SampleEntry>
+					<SampleEntry>3.303333333</SampleEntry>
+					<SampleEntry>7.45</SampleEntry>
+					<SampleEntry>1.75</SampleEntry>
+					<SampleEntry>8.503333333</SampleEntry>
+					<SampleEntry>2.166666667</SampleEntry>
+					<SampleEntry>5.363333333</SampleEntry>
+					<SampleEntry>3.413333333</SampleEntry>
+					<SampleEntry>1.626666667</SampleEntry>
+					<SampleEntry>5.263333333</SampleEntry>
+					<SampleEntry>3.866666667</SampleEntry>
+					<SampleEntry>9.56</SampleEntry>
+					<SampleEntry>7.06</SampleEntry>
+					<SampleEntry>2.703333333</SampleEntry>
+					<SampleEntry>2.523333333</SampleEntry>
+					<SampleEntry>4.986666667</SampleEntry>
+					<SampleEntry>8.346666667</SampleEntry>
+					<SampleEntry>2.743333333</SampleEntry>
+					<SampleEntry>4.793333334</SampleEntry>
+					<SampleEntry>1.38</SampleEntry>
+					<SampleEntry>2.84</SampleEntry>
+					<SampleEntry>2.826666667</SampleEntry>
+					<SampleEntry>3.31</SampleEntry>
+					<SampleEntry>17.98333333</SampleEntry>
+					<SampleEntry>1.886666667</SampleEntry>
+					<SampleEntry>3.383333333</SampleEntry>
+					<SampleEntry>3.223333333</SampleEntry>
+					<SampleEntry>1.776666667</SampleEntry>
+					<SampleEntry>2.726666667</SampleEntry>
+					<SampleEntry>8.363333333</SampleEntry>
+					<SampleEntry>3.01</SampleEntry>
+					<SampleEntry>3.696666667</SampleEntry>
+					<SampleEntry>3.236666667</SampleEntry>
+					<SampleEntry>1.763333333</SampleEntry>
+					<SampleEntry>1.64</SampleEntry>
+					<SampleEntry>3.32</SampleEntry>
+					<SampleEntry>6.686666667</SampleEntry>
+					<SampleEntry>2.863333333</SampleEntry>
+					<SampleEntry>1.5</SampleEntry>
+					<SampleEntry>7.95</SampleEntry>
+					<SampleEntry>17.38</SampleEntry>
+					<SampleEntry>8.246666667</SampleEntry>
+					<SampleEntry>1.933333333</SampleEntry>
+					<SampleEntry>2.063333333</SampleEntry>
+					<SampleEntry>2.766666667</SampleEntry>
+					<SampleEntry>8.783333333</SampleEntry>
+					<SampleEntry>3.246666667</SampleEntry>
+					<SampleEntry>2.82</SampleEntry>
+					<SampleEntry>3.596666667</SampleEntry>
+					<SampleEntry>2.073333333</SampleEntry>
+					<SampleEntry>9.34</SampleEntry>
+					<SampleEntry>1.9</SampleEntry>
+					<SampleEntry>5.356666667</SampleEntry>
+					<SampleEntry>8.476666667</SampleEntry>
+					<SampleEntry>19.59666667</SampleEntry>
+					<SampleEntry>9.776666667</SampleEntry>
+					<SampleEntry>6.603333333</SampleEntry>
+					<SampleEntry>2.603333333</SampleEntry>
+					<SampleEntry>5.81</SampleEntry>
+					<SampleEntry>4.873333333</SampleEntry>
+					<SampleEntry>3.023333333</SampleEntry>
+					<SampleEntry>1.946666667</SampleEntry>
+					<SampleEntry>2.083333333</SampleEntry>
+					<SampleEntry>1.516666666</SampleEntry>
+					<SampleEntry>5.046666667</SampleEntry>
+					<SampleEntry>4.773333333</SampleEntry>
+					<SampleEntry>13.43666667</SampleEntry>
+					<SampleEntry>10.17</SampleEntry>
+					<SampleEntry>4.3</SampleEntry>
+					<SampleEntry>3.123333333</SampleEntry>
+					<SampleEntry>3.07</SampleEntry>				
+				</CustomDistribution>		
+			</CustomDistributions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1717855024676</Id>
@@ -4509,6 +6509,11 @@ WaitingTime = time(MINUTE);]]></Action>
 					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
 					<AgentLinkBidirectional>true</AgentLinkBidirectional>
 					<MessageType><![CDATA[Object]]></MessageType>
+					<StatechartReference>
+						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+						<ClassName><![CDATA[ContainerShip]]></ClassName>
+						<ItemName><![CDATA[statechart]]></ItemName>
+					</StatechartReference>
 					<LineStyle>SOLID</LineStyle>
 					<LineWidth>1</LineWidth>
 					<LineColor>-16777216</LineColor>
@@ -4598,211 +6603,34 @@ WaitingTime = time(MINUTE);]]></Action>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.25</Scale>
+					<Scale>0.05</Scale>
 					<Rotation>0.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<ApplyShading>true</ApplyShading>
 					<InternalLighting>OFF</InternalLighting>
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 				</Figure3D>
-			</Presentation>
-
-				</Level>
-			</Presentation>
-
-		</ActiveObjectClass>
-		<!--   =========   Active Object Class   ========  -->
-		<ActiveObjectClass>
-			<Id>1717855094031</Id>
-			<Name><![CDATA[LivestockCarrier]]></Name>
-			<ExtendsReference>
-				<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
-				<ClassName><![CDATA[Ship]]></ClassName>
-			</ExtendsReference>
-			<Generic>false</Generic>
-			<GenericParameter>
-				<Id>1717855094037</Id>
-				<Name><![CDATA[1717855094037]]></Name>
-				<GenericParameterValue Class="CodeValue">
-					<Code><![CDATA[T extends Agent]]></Code>
-				</GenericParameterValue>
-				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
-			</GenericParameter>
-			<FlowChartsUsage>ENTITY</FlowChartsUsage>
-			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
-			<MakeDefaultViewArea>true</MakeDefaultViewArea>
-			<SceneGridColor/>
-			<SceneBackgroundColor/>
-			<SceneSkybox>null</SceneSkybox>
-			<AgentProperties>
-				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
-				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
-				<RotateAnimationVertically>false</RotateAnimationVertically>
-				<VelocityCode Class="CodeUnitValue">
-					<Code><![CDATA[10]]></Code>
-					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-				</VelocityCode>
-				<PhysicalLength Class="CodeUnitValue">
-					<Code><![CDATA[1]]></Code>
-					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-				</PhysicalLength>
-				<PhysicalWidth Class="CodeUnitValue">
-					<Code><![CDATA[1]]></Code>
-					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-				</PhysicalWidth>
-				<PhysicalHeight Class="CodeUnitValue">
-					<Code><![CDATA[1]]></Code>
-					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
-				</PhysicalHeight>
-			</AgentProperties>
-			<EnvironmentProperties>
-					<EnableSteps>false</EnableSteps>
-					<StepDurationCode Class="CodeUnitValue">
-						<Code><![CDATA[1.0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</StepDurationCode>
-					<SpaceType>CONTINUOUS</SpaceType>
-					<WidthCode><![CDATA[500]]></WidthCode>
-					<HeightCode><![CDATA[500]]></HeightCode>
-					<ZHeightCode><![CDATA[0]]></ZHeightCode>
-					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
-					<RowsCountCode><![CDATA[100]]></RowsCountCode>
-					<NeigborhoodType>MOORE</NeigborhoodType>
-					<LayoutType>USER_DEF</LayoutType>
-					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
-					<NetworkType>USER_DEF</NetworkType>
-					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
-					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
-					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
-					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
-					<MCode><![CDATA[10]]></MCode>
-			</EnvironmentProperties>
-			<DatasetsCreationProperties>
-				<AutoCreate>true</AutoCreate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1717920000000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-			</DatasetsCreationProperties>
-			<ScaleRuler>
-				<Id>1717855094034</Id>
-				<Name><![CDATA[scale]]></Name>
-				<X>0</X><Y>-150</Y>
-				<PublicFlag>false</PublicFlag>
-				<PresentationFlag>false</PresentationFlag>
-				<ShowLabel>false</ShowLabel>
-				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-				<Length>100</Length>
-				<Rotation>0</Rotation>
-				<ScaleType>BASED_ON_LENGTH</ScaleType>
-				<ModelLength>10</ModelLength>
-				<LengthUnits>METER</LengthUnits>
-				<Scale>10</Scale>
-				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
-			</ScaleRuler>
-			<CurrentLevel>1717855094038</CurrentLevel>
-			<ConnectionsId>1717855094032</ConnectionsId>
-			<AgentLinks>
-				<AgentLink>
-					<Id>1717855094032</Id>
-					<Name><![CDATA[connections]]></Name>
-					<X>50</X><Y>-50</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<HandleReceiveInConnections>false</HandleReceiveInConnections>
-					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
-					<AgentLinkBidirectional>true</AgentLinkBidirectional>
-					<MessageType><![CDATA[Object]]></MessageType>
-					<LineStyle>SOLID</LineStyle>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineZOrder>UNDER_AGENTS</LineZOrder>
-					<LineArrow>NONE</LineArrow>
-					<LineArrowPosition>END</LineArrowPosition>
-				</AgentLink>
-			</AgentLinks>
-
-			<ContainerLinks>
-				<ContainerLink>
-					<Id>1717855094095</Id>
-					<Name><![CDATA[main]]></Name>
-					<X>50</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ActiveObjectClass>
-						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-					</ActiveObjectClass>
-				</ContainerLink>
-			</ContainerLinks>
-
-			<Presentation>
-				<Level>
-					<Id>1717855094038</Id>
-					<Name><![CDATA[level]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+				<Text>
+					<Id>1719577190973</Id>
+					<Name><![CDATA[PKName]]></Name>
+					<X>-15</X><Y>5</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
-
-			<Presentation>
-				<Figure3D>
-					<Id>1717855094053</Id>
-					<Name><![CDATA[container_ship_empty]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<X>0</X><Y>0</Y><Z>0</Z>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<ResourceReference>
-						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
-						<ClassName><![CDATA[3d/container_ship_empty.dae]]></ClassName>
-					</ResourceReference>
-					<ColorTable>
-						<ColorMapping>
-							<Name><![CDATA[MA_material]]></Name>
-							<OriginalColor>-11447983</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_8]]></Name>
-							<OriginalColor>-1973791</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_1]]></Name>
-							<OriginalColor>-12213504</OriginalColor>
-						</ColorMapping>
-						<ColorMapping>
-							<Name><![CDATA[MA_material_16]]></Name>
-							<OriginalColor>-10586498</OriginalColor>
-						</ColorMapping>
-					</ColorTable>
-					<AutoScale>true</AutoScale>
-					<Scale>0.25</Scale>
 					<Rotation>0.0</Rotation>
-					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
-					<ApplyShading>true</ApplyShading>
-					<InternalLighting>OFF</InternalLighting>
-					<IgnoreSceneLights>false</IgnoreSceneLights>
-				</Figure3D>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Nama]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -4813,6 +6641,7 @@ WaitingTime = time(MINUTE);]]></Action>
 		<ActiveObjectClass>
 			<Id>1717855159677</Id>
 			<Name><![CDATA[Port1]]></Name>
+			<StartupCode><![CDATA[setupDocks();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1717855159683</Id>
@@ -4995,6 +6824,24 @@ WaitingTime = time(MINUTE);]]></Action>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1719590008289</Id>
+					<Name><![CDATA[availableDock]]></Name>
+					<X>890</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedList]]></CollectionClass>
+						<ElementClass><![CDATA[DockKapal]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{ dockKapal1, dockKapal2, dockKapal3 }]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -5022,7 +6869,6 @@ WaitingTime = time(MINUTE);]]></Action>
 					<Properties Width="100" Height="30">
 						<EntryAction><![CDATA[send("go to dock", vesselUnit);
 vesselLoad=vesselUnit.unload;
-effectiveTime=vesselLoad/unloadingRate;
 isAvailable = false;
 traceln("Processing Ship" + vesselUnit);]]></EntryAction>
 						<ExitAction><![CDATA[isAvailable = true;
@@ -5061,6 +6907,11 @@ if (!shipQueue.isEmpty()) {
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718859961711</Id>
 					<Name><![CDATA[checkReq]]></Name>
+					<Description><![CDATA[if (!shipQueue.isEmpty()) {
+    traceln("Ship in queue: " + shipQueue.peekFirst());
+} else {
+    traceln("No ship in queue.");
+}]]></Description>
 					<X>650</X><Y>170</Y>
 					<Label><X>-85</X><Y>50</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -5087,6 +6938,8 @@ if (!shipQueue.isEmpty()) {
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
 						</Rate>
+						<Guard><![CDATA[
+]]></Guard>
 						<MessageType><![CDATA[Object]]></MessageType>
 						<DefaultTransition>true</DefaultTransition>
 						<FilterType><![CDATA[equalsTo]]></FilterType>
@@ -5097,8 +6950,6 @@ if (!shipQueue.isEmpty()) {
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1718859965948</Id>
 					<Name><![CDATA[Masuk]]></Name>
-					<Description><![CDATA[vesselUnit = shipQueue.removeFirst();
-traceln("Ship accepted: " + vesselUnit);]]></Description>
 					<X>650</X><Y>300</Y>
 					<Label><X>-65</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -5142,7 +6993,7 @@ traceln("Ship accepted: " + vesselUnit);]]></Action>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>0</X><Y>-170</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
+					<IconOffset>80.0</IconOffset>
 					<Properties Source="1718859937772" Target="1718859926775" Trigger="timeout">
 						<Action><![CDATA[isAvailable = true;]]></Action>
 						<Timeout Class="CodeUnitValue">
@@ -5250,7 +7101,7 @@ traceln("Ship accepted: " + vesselUnit);]]></Action>
 						<Name><![CDATA[unit]]></Name>
 						<Type><![CDATA[Ship]]></Type>
 					</Parameter>
-					<Body><![CDATA[traceln("Ship arrived at dock:");
+					<Body><![CDATA[traceln("Ship arrived at dock:" + vesselUnit);
 isAvailable = false;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -5296,6 +7147,20 @@ shipQueue.add(unit);
     shipQueue.addLast(unit);
     traceln("Queue size after adding: " + shipQueue.size());
     processNextShip();]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1719590750543</Id>
+					<Name><![CDATA[setupDocks]]></Name>
+					<X>890</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[dockKapal1.isOccupied = false;
+dockKapal2.isOccupied = false;
+dockKapal3.isOccupied = false;]]></Body>
 				</Function>
 			</Functions>
 			<CustomDistributions>
@@ -5595,6 +7460,203 @@ shipQueue.add(unit);
 					</ActiveObjectClass>
 				</ContainerLink>
 			</ContainerLinks>
+			<EmbeddedObjects>
+				<EmbeddedObject>
+					<Id>1719589931468</Id>
+					<Name><![CDATA[dockKapal1]]></Name>
+					<X>890</X><Y>140</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+						<ClassName><![CDATA[DockKapal]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+							<ClassName><![CDATA[DockKapal]]></ClassName>
+							<ItemName><![CDATA[1719589840737]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[isOccupied]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>NODE</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<NodeCode><![CDATA[main.dockingNode]]></NodeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1719589963904</Id>
+					<Name><![CDATA[dockKapal2]]></Name>
+					<X>890</X><Y>170</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+						<ClassName><![CDATA[DockKapal]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+							<ClassName><![CDATA[DockKapal]]></ClassName>
+							<ItemName><![CDATA[1719589840737]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[isOccupied]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>NODE</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<NodeCode><![CDATA[main.dockingBNode]]></NodeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1719589979125</Id>
+					<Name><![CDATA[dockKapal3]]></Name>
+					<X>890</X><Y>200</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+						<ClassName><![CDATA[DockKapal]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+							<ClassName><![CDATA[DockKapal]]></ClassName>
+							<ItemName><![CDATA[1719589840737]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[isOccupied]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>NODE</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<NodeCode><![CDATA[main.dockingCNode]]></NodeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+			</EmbeddedObjects>
 
 			<Presentation>
 				<Level>
@@ -5972,6 +8034,193 @@ shipQueue.add(unit);
 			</Presentation>
 
 		</ActiveObjectClass>
+		<!--   =========   Active Object Class   ========  -->
+		<ActiveObjectClass>
+			<Id>1719589840731</Id>
+			<Name><![CDATA[DockKapal]]></Name>
+			<Generic>false</Generic>
+			<GenericParameter>
+				<Id>1719589840737</Id>
+				<Name><![CDATA[1719589840737]]></Name>
+				<GenericParameterValue Class="CodeValue">
+					<Code><![CDATA[T extends Agent]]></Code>
+				</GenericParameterValue>
+				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
+			</GenericParameter>
+			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<SamplesToKeep>100</SamplesToKeep>
+			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+			<ElementsLimitValue>100</ElementsLimitValue>
+			<MakeDefaultViewArea>true</MakeDefaultViewArea>
+			<SceneGridColor/>
+			<SceneBackgroundColor/>
+			<SceneSkybox>null</SceneSkybox>
+			<AgentProperties>
+				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+				<RotateAnimationVertically>false</RotateAnimationVertically>
+				<VelocityCode Class="CodeUnitValue">
+					<Code><![CDATA[10]]></Code>
+					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+				</VelocityCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
+			</AgentProperties>
+			<EnvironmentProperties>
+					<EnableSteps>false</EnableSteps>
+					<StepDurationCode Class="CodeUnitValue">
+						<Code><![CDATA[1.0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</StepDurationCode>
+					<SpaceType>CONTINUOUS</SpaceType>
+					<WidthCode><![CDATA[500]]></WidthCode>
+					<HeightCode><![CDATA[500]]></HeightCode>
+					<ZHeightCode><![CDATA[0]]></ZHeightCode>
+					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[100]]></RowsCountCode>
+					<NeigborhoodType>MOORE</NeigborhoodType>
+					<LayoutType>USER_DEF</LayoutType>
+					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
+					<NetworkType>USER_DEF</NetworkType>
+					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
+					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+					<MCode><![CDATA[10]]></MCode>
+			</EnvironmentProperties>
+			<DatasetsCreationProperties>
+				<AutoCreate>true</AutoCreate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1719648000000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+			</DatasetsCreationProperties>
+			<ScaleRuler>
+				<Id>1719589840734</Id>
+				<Name><![CDATA[scale]]></Name>
+				<X>0</X><Y>-150</Y>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>false</PresentationFlag>
+				<ShowLabel>false</ShowLabel>
+				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+				<Length>100</Length>
+				<Rotation>0</Rotation>
+				<ScaleType>BASED_ON_LENGTH</ScaleType>
+				<ModelLength>10</ModelLength>
+				<LengthUnits>METER</LengthUnits>
+				<Scale>10</Scale>
+				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+			</ScaleRuler>
+			<CurrentLevel>1719589840738</CurrentLevel>
+			<ConnectionsId>1719589840732</ConnectionsId>
+			<Variables>
+				<Variable Class="Parameter">
+					<Id>1719589845141</Id>
+					<Name><![CDATA[isOccupied]]></Name>
+					<X>400</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1719589845139</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
+			<AgentLinks>
+				<AgentLink>
+					<Id>1719589840732</Id>
+					<Name><![CDATA[connections]]></Name>
+					<X>50</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentLinkBidirectional>true</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<LineStyle>SOLID</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
+			</AgentLinks>
+
+			<ContainerLinks>
+				<ContainerLink>
+					<Id>1719589932677</Id>
+					<Name><![CDATA[main]]></Name>
+					<X>50</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+				<ContainerLink>
+					<Id>1719589932680</Id>
+					<Name><![CDATA[port1]]></Name>
+					<X>150</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[pelabuhanbimaplsjanganilang]]></PackageName>
+						<ClassName><![CDATA[Port1]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+			</ContainerLinks>
+
+			<Presentation>
+				<Level>
+					<Id>1719589840738</Id>
+					<Name><![CDATA[level]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
+
+
+				</Level>
+			</Presentation>
+
+		</ActiveObjectClass>
 	</ActiveObjectClasses>	
 	<DifferentialEquationsMethod>EULER</DifferentialEquationsMethod>
 	<MixedEquationsMethod>RK45_NEWTON</MixedEquationsMethod>
@@ -6093,11 +8342,6 @@ shipQueue.add(unit);
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[3d/container_ship_empty.dae]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
 			<Path><![CDATA[3d/warehouse_2.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
@@ -6114,11 +8358,6 @@ shipQueue.add(unit);
 		</Resource>
 		<Resource>
 			<Path><![CDATA[3d/container20.jpg]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Path><![CDATA[3d/cruise_ship.dae]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
